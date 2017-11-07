@@ -29,9 +29,17 @@ function extend(to, _from) {
  */
 export function toObject(arr) {
   var res = {};
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i]) {
-      extend(res, arr[i]);
+  
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (arr[i]) {
+  //     extend(res, arr[i]);
+  //   }
+  // }
+  
+  // 数组循环用for...of
+  for (let ele of arr) {
+    if (ele) {
+      extend(res, ele);
     }
   }
   return res;
@@ -51,6 +59,7 @@ export const getValueByPath = function (obj, prop) {
     const path = paths[i];
     if (!current) break;
 
+    //赋值时机
     if (i === j - 1) {
       result = current[path];
       break;
@@ -59,4 +68,41 @@ export const getValueByPath = function (obj, prop) {
   }
 
   return result;
-}
+};
+
+/**
+ * @description 根据路径获取一个对象的key value和包含它们的对象，返回一个包含三者的对象
+ * @param {Object} obj 
+ * @param {String} path 
+ * @param {Boolean} strict 
+ */
+export function getPropByPath(obj, path, strict) {
+  let tempObj = obj;
+  // 方括号语法 '[person1][state][name]'
+  path = path.replace(/\[(\w+)\]/g, '.$1');
+  console.log('path1', path);
+  // 去除首个. '.person1.name'
+  path = path.replace(/^\./, '');
+  console.log('path2', path);
+
+  let keyArr = path.split('.');
+  console.log('keyArr', keyArr);
+  let i = 0;
+  for (let len = keyArr.length; i < len - 1; ++i) {
+    if (!tempObj && !strict) break;
+    let key = keyArr[i];
+    if (key in tempObj) {
+      tempObj = tempObj[key];
+    } else {
+      if (strict) {
+        throw new Error('please transfer a valid prop path to form item!');
+      }
+      break;
+    }
+  }
+  return {
+    o: tempObj,
+    k: keyArr[i],
+    v: tempObj ? tempObj[keyArr[i]] : null
+  };
+};

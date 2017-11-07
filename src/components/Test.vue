@@ -10,7 +10,7 @@
 
 <script>
 import merge from 'utils/merge';
-import { toObject, getValueByPath } from 'utils/util';
+import { toObject, getValueByPath, getPropByPath } from 'utils/util';
 export default {
   created() {
     const obj = {
@@ -47,6 +47,7 @@ export default {
     };
     let value = getValueByPath(obj3, 'person1.state.name');
     console.log('value', value);
+    console.log('getPropByPath', getPropByPath(obj3, '[person1][state][name]', false));
   }
 }
 </script>
