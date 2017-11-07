@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// 直接引入即可
+import lodash from 'lodash'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

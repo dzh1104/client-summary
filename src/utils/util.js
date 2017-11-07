@@ -29,7 +29,7 @@ function extend(to, _from) {
  */
 export function toObject(arr) {
   var res = {};
-  
+
   // for (let i = 0; i < arr.length; i++) {
   //   if (arr[i]) {
   //     extend(res, arr[i]);
@@ -100,6 +100,7 @@ export function getPropByPath(obj, path, strict) {
       break;
     }
   }
+  
   return {
     o: tempObj,
     k: keyArr[i],
