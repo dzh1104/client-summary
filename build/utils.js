@@ -4,9 +4,9 @@ const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 exports.assetsPath = function (_path) {
-  const assetsSubDirectory = process.env.NODE_ENV === 'production'
-    ? config.build.assetsSubDirectory
-    : config.dev.assetsSubDirectory
+  const assetsSubDirectory = process.env.NODE_ENV === 'production' ?
+    config.build.assetsSubDirectory :
+    config.dev.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
 
@@ -22,7 +22,7 @@ exports.cssLoaders = function (options) {
   }
 
   // generate loader string to be used with extract text plugin
-  function generateLoaders (loader, loaderOptions) {
+  function generateLoaders(loader, loaderOptions) {
     const loaders = [cssLoader]
     if (loader) {
       loaders.push({
@@ -45,13 +45,43 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  function resolveResouce(name) {
+    return path.resolve(__dirname, "../src/global/styles/" + name);
+  }
+
+  function generateSassResourceLoader() {
+    var loaders = [
+      cssLoader,
+      // "postcss-loader",
+      "sass-loader",
+      {
+        loader: "sass-resources-loader",
+        options: {
+          // it need a absolute path
+          resources: [resolveResouce("var.scss"), resolveResouce("mixin.scss")]
+        }
+      }
+    ];
+
+    if (options.extract) {
+      return ExtractTextPlugin.extract({
+        use: loaders,
+        fallback: "vue-style-loader"
+      });
+    } else {
+      return ["vue-style-loader"].concat(loaders);
+    }
+  }
+
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
+    // sass: generateLoaders('sass', { indentedSyntax: true }),
+    sass: generateSassResourceLoader(),
+    // scss: generateLoaders('sass'),
+    scss: generateSassResourceLoader(),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }
