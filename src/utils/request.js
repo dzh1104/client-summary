@@ -9,7 +9,7 @@ import {
 //创建axios实例
 const service = axios.create({
   //api的base_url(根据环境)
-  baseURL: process.env.NODE_ENV === 'development' ? '' : '',
+  baseURL: process.env.NODE_ENV === 'development' ? '' : '/dev',
   responseType: 'json',
   // 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise
   // 大于等于200 小于300 通过校验 resolve
@@ -25,7 +25,8 @@ const notEncryptApi = [];
 
 const api = {
   get(url, reqData, needAlert = true) {
-    reqData = handleReqData(reqData);
+    // reqData = handleReqData(url, reqData);
+    console.log('reqData', reqData);
     return new Promise((resolve, reject) => {
       service.get(url, {
         url: url,
@@ -39,7 +40,7 @@ const api = {
     });
   },
   post(url, reqData, needAlert = true) {
-    reqData = handleReqData(reqData);
+    reqData = handleReqData(url, reqData);
     return new Promise((resolve, reject) => {
       service.post(url, {
         url: url,
@@ -54,11 +55,11 @@ const api = {
   }
 };
 
-function handleReqData(reqData, resolve, needAlert) {
+function handleReqData(url, reqData) {
   //是否加密
   let needAesEncrypt;
   //某些接口肯定不加密
-  if (notEncryptApi.indexOf(path) !== -1) {
+  if (notEncryptApi.indexOf(url) !== -1) {
     needAesEncrypt = false;
     //查看登录接口是否有储存key，有则加密，没有则不加密
   } else if (sessionStorage.getItem('decryptedKey')) {
@@ -67,7 +68,6 @@ function handleReqData(reqData, resolve, needAlert) {
   } else {
     needAesEncrypt = false;
   }
-
   reqData = JSON.stringify(reqData);
   if (needAesEncrypt) {
     let iv = CryptoJS.enc.Utf8.parse(sessionStorage.getItem('decryptedIv'));
@@ -80,6 +80,7 @@ function handleReqData(reqData, resolve, needAlert) {
     }).toString();
   }
 
+  console.log('reqData', reqData);
   return reqData;
 }
 

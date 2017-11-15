@@ -7,10 +7,13 @@
 </template>
 
 <script>
+import Test from 'api/test';
 export default {
   name: "app",
   methods: {
-    test() {}
+    test() {
+      Test.test()
+    }
   }
 };
 </script>
