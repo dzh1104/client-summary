@@ -9,7 +9,7 @@ import {
 //创建axios实例
 const service = axios.create({
   //api的base_url(根据环境)
-  baseURL: process.env.NODE_ENV === 'development' ? '' : '/dev',
+  baseURL: process.env.NODE_ENV === 'development' ? '/dev' : '',
   responseType: 'json',
   // 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise
   // 大于等于200 小于300 通过校验 resolve
@@ -25,33 +25,33 @@ const notEncryptApi = [];
 
 const api = {
   get(url, reqData, needAlert = true) {
-    // reqData = handleReqData(url, reqData);
+    reqData = handleReqData(url, reqData);
     console.log('reqData', reqData);
-    return new Promise((resolve, reject) => {
-      service.get(url, {
-        url: url,
-        method: 'get',
-        params: reqData
-      }).then(resData => {
-        handleResData(resData, resolve, needAlert);
-      }).catch(error => {
-        handleError(error, reject, needAlert);
-      })
-    });
+    return service.get(url, {
+      url: url,
+      method: 'get',
+      params: {
+        data: reqData
+      }
+    }).then(resData => {
+      return handleResData(resData, needAlert);
+    }).catch(error => {
+      return handleError(error, needAlert);
+    })
   },
   post(url, reqData, needAlert = true) {
     reqData = handleReqData(url, reqData);
-    return new Promise((resolve, reject) => {
-      service.post(url, {
-        url: url,
-        method: 'post',
+    service.post(url, {
+      url: url,
+      method: 'post',
+      data: {
         data: reqData
-      }).then(resData => {
-        handleResData(resData, resolve, needAlert);
-      }).catch(error => {
-        handleError(error, reject, needAlert);
-      })
-    });
+      }
+    }).then(resData => {
+      return handleResData(resData, needAlert);
+    }).catch(error => {
+      return handleError(error, needAlert);
+    })
   }
 };
 
@@ -84,12 +84,12 @@ function handleReqData(url, reqData) {
   return reqData;
 }
 
-function handleResData(resData, resolve, needAlert) {
+function handleResData(resData, needAlert) {
 
 }
 
 //这种是请求的错误，并非业务上的错误，业务上的错误需要在处理返回数据中处理handleResData
-function handleError(error, reject) {
+function handleError(error) {
   if (error.response) {
     // 请求已发出，但服务器响应的状态码不在 2xx 范围内
     console.log(error.response.data);

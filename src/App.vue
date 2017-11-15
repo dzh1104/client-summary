@@ -12,7 +12,13 @@ export default {
   name: "app",
   methods: {
     test() {
-      Test.test()
+      Test.test({
+        name: 'dzh'
+      }).then(res => {
+        console.log('res', res);
+      }).catch(err => {
+        console.log('err', err);
+      })
     }
   }
 };
