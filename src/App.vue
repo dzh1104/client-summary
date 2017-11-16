@@ -2,25 +2,13 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
-    <el-button type="primary" @click="test">TEST</el-button>
   </div>
 </template>
 
 <script>
 import Test from 'api/test';
 export default {
-  name: "app",
-  methods: {
-    test() {
-      Test.test({
-        name: 'dzh'
-      }).then(res => {
-        console.log('res', res);
-      }).catch(err => {
-        console.log('err', err);
-      })
-    }
-  }
+  name: "app"
 };
 </script>
 

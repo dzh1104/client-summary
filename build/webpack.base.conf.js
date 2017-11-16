@@ -26,7 +26,8 @@ module.exports = {
       '@': resolve('src'),
       'utils': path.resolve(__dirname, '../src/utils'),
       'global': path.resolve(__dirname, '../src/global'),
-      'api': path.resolve(__dirname, '../src/api')
+      'api': path.resolve(__dirname, '../src/api'),
+      'views': path.resolve(__dirname, '../src/views')
     }
   },
   module: {

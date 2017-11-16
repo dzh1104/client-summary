@@ -55,19 +55,22 @@ const api = {
   }
 };
 
-function handleReqData(url, reqData) {
+//判断是否加密
+function needAesEncryptFn(url) {
   //是否加密
-  let needAesEncrypt;
+  let needAesEncrypt = false;
   //某些接口肯定不加密
   if (notEncryptApi.indexOf(url) !== -1) {
     needAesEncrypt = false;
     //查看登录接口是否有储存key，有则加密，没有则不加密
   } else if (sessionStorage.getItem('decryptedKey')) {
     needAesEncrypt = true;
-    //其他情况都加密
-  } else {
-    needAesEncrypt = false;
   }
+  return needAesEncrypt;
+}
+
+function handleReqData(url, reqData) {
+  let needAesEncrypt = needAesEncryptFn(url);
   reqData = JSON.stringify(reqData);
   if (needAesEncrypt) {
     let iv = CryptoJS.enc.Utf8.parse(sessionStorage.getItem('decryptedIv'));
@@ -85,7 +88,7 @@ function handleReqData(url, reqData) {
 }
 
 function handleResData(resData, needAlert) {
-
+  let needAesEncrypt = needAesEncryptFn(url);
 }
 
 //这种是请求的错误，并非业务上的错误，业务上的错误需要在处理返回数据中处理handleResData
