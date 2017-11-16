@@ -1,5 +1,6 @@
 // axios中文https://www.kancloud.cn/yunye/axios/234845
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 import {
   Message,
   MessageBox
@@ -19,13 +20,19 @@ const service = axios.create({
   timeout: 6000
 });
 
+//不需要加密的api
+const notEncryptApi = [];
+
 const api = {
   get(url, reqData, needAlert = true) {
+    reqData = handleReqData(url, reqData);
     console.log('reqData', reqData);
     return service.get(url, {
       url: url,
       method: 'get',
-      params: reqData
+      params: {
+        data: reqData
+      }
     }).then(resData => {
       return handleResData(resData, needAlert);
     }).catch(error => {
@@ -33,10 +40,13 @@ const api = {
     })
   },
   post(url, reqData, needAlert = true) {
+    reqData = handleReqData(url, reqData);
     service.post(url, {
       url: url,
       method: 'post',
-      data: reqData
+      data: {
+        data: reqData
+      }
     }).then(resData => {
       return handleResData(resData, needAlert);
     }).catch(error => {
@@ -45,18 +55,43 @@ const api = {
   }
 };
 
-/**
- * @param resData 接口返回的数据
- * @param needAlert 是否需要弹框或额外处理
- */
-function handleResData(resData, needAlert) {
-  return resData;
+//判断是否加密
+function needAesEncryptFn(url) {
+  //是否加密
+  let needAesEncrypt = false;
+  //某些接口肯定不加密
+  if (notEncryptApi.indexOf(url) !== -1) {
+    needAesEncrypt = false;
+    //查看登录接口是否有储存key，有则加密，没有则不加密
+  } else if (sessionStorage.getItem('decryptedKey')) {
+    needAesEncrypt = true;
+  }
+  return needAesEncrypt;
 }
 
-/**
- * @description 这种是请求的错误，并非业务上的错误，业务上的错误需要在处理返回数据中处理handleResData
- * @param {Object} error 接口错误对像
- */
+function handleReqData(url, reqData) {
+  let needAesEncrypt = needAesEncryptFn(url);
+  reqData = JSON.stringify(reqData);
+  if (needAesEncrypt) {
+    let iv = CryptoJS.enc.Utf8.parse(sessionStorage.getItem('decryptedIv'));
+    let key = CryptoJS.enc.Utf8.parse(sessionStorage.getItem('decryptedKey'));
+    //需要加密
+    reqData = CryptoJS.AES.encrypt(reqData, key, {
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Iso10126,
+      iv: iv
+    }).toString();
+  }
+
+  console.log('reqData', reqData);
+  return reqData;
+}
+
+function handleResData(resData, needAlert) {
+  let needAesEncrypt = needAesEncryptFn(url);
+}
+
+//这种是请求的错误，并非业务上的错误，业务上的错误需要在处理返回数据中处理handleResData
 function handleError(error) {
   if (error.response) {
     // 请求已发出，但服务器响应的状态码不在 2xx 范围内
