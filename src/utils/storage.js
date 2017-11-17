@@ -1,6 +1,7 @@
 const storage = window.sessionStorage;
 
 export default class {
+  //若不存在对应的key，返回null
   static getItem(key) {
     return JSON.parse(storage.getItem(key));
   }
