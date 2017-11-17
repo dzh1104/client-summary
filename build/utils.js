@@ -57,7 +57,7 @@ exports.cssLoaders = function (options) {
       {
         loader: "sass-resources-loader",
         options: {
-          // it need a absolute path
+          // it need a absolute path 在入口文件处，不需要再引入
           resources: [resolveResouce("var.scss"), resolveResouce("mixin.scss")]
         }
       }
