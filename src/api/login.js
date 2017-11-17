@@ -8,7 +8,6 @@ export default class {
       password
     };
     return fetch.post(path, postData).then(res => {
-      alert('right');
       return res;
     }).catch(err => {
 

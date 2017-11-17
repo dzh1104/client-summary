@@ -16,6 +16,10 @@
     <el-form-item label="密码">
       <el-input v-model="loginInfo.password" @keyup.enter.native="login"></el-input>
     </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="login">登 录</el-button>
+      <el-button type="primary">注 册</el-button>
+    </el-form-item>
   </el-form>
 </div>
 </template>
@@ -33,7 +37,6 @@ export default {
   },
   methods: {
     login() {
-      alert(1);
       let username = this.loginInfo.username;
       let password = this.loginInfo.password;
       LoginApi.login(username, password).then(res => {
