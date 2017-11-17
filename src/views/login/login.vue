@@ -14,13 +14,14 @@
       <el-input v-model="loginInfo.username"></el-input>
     </el-form-item>
     <el-form-item label="密码">
-      <el-input v-model="loginInfo.password"></el-input>
+      <el-input v-model="loginInfo.password" @keyup.enter.native="login"></el-input>
     </el-form-item>
   </el-form>
 </div>
 </template>
 
 <script>
+import LoginApi from 'api/login';
 export default {
   data() {
     return {
@@ -28,6 +29,14 @@ export default {
         username: '',
         password: ''
       }
+    }
+  },
+  methods: {
+    login() {
+      alert(1);
+      let username = this.loginInfo.username;
+      let password = this.loginInfo.password;
+      LoginApi.login()
     }
   }
 }
