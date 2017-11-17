@@ -19,7 +19,7 @@ const service = axios.create({
   timeout: 6000
 });
 
-const api = {
+const fetch = {
   get(url, reqData, needAlert = true) {
     console.log('reqData', reqData);
     return service.get(url, {
@@ -33,7 +33,8 @@ const api = {
     })
   },
   post(url, reqData, needAlert = true) {
-    service.post(url, {
+    console.log('reqData', reqData);
+    return service.post(url, {
       url: url,
       method: 'post',
       data: reqData
@@ -77,4 +78,4 @@ function handleError(error) {
   console.log(error.config);
 }
 
-export default api;
+export default fetch;
