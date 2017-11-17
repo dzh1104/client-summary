@@ -7,6 +7,9 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+//引入reset.scss
+import 'global/styles/index.scss';
+
 // 直接引入即可,即可在页面中直接使用符号'_'
 import lodash from 'lodash'
 
