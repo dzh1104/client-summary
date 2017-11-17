@@ -36,7 +36,9 @@ export default {
       alert(1);
       let username = this.loginInfo.username;
       let password = this.loginInfo.password;
-      LoginApi.login()
+      LoginApi.login(username, password).then(res => {
+        console.log('login', res);
+      })
     }
   }
 }
