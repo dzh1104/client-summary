@@ -61,9 +61,7 @@ function handleResData(resData, needAlert) {
 function handleError(error) {
   if (error.response) {
     // 请求已发出，但服务器响应的状态码不在 2xx 范围内
-    console.log(error.response.data);
-    console.log(error.response.status);
-    console.log(error.response.headers);
+    console.log('error.response', error.response);
     // 利用element-ui的Message统一弹出
     Message({
       message: error.response.status,
@@ -75,7 +73,7 @@ function handleError(error) {
     // Something happened in setting up the request that triggered an Error
     console.log('Error', error.message);
   }
-  console.log(error.config);
+  console.log('error.config', error.config);
 }
 
 export default fetch;
