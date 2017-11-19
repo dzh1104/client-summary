@@ -14,11 +14,14 @@
       <el-input v-model="loginInfo.username"></el-input>
     </el-form-item>
     <el-form-item label="密码">
-      <el-input v-model="loginInfo.password" @keyup.enter.native="login"></el-input>
+      <el-input v-model="loginInfo.password"></el-input>
+    </el-form-item>
+    <el-form-item label="密码">
+      <el-input v-model="loginInfo.repassword" @keyup.enter.native="login"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="login">登 录</el-button>
-      <el-button type="primary">注 册</el-button>
+      <el-button type="primary" @click="login">注 册</el-button>
     </el-form-item>
   </el-form>
 </div>
@@ -31,7 +34,8 @@ export default {
     return {
       loginInfo: {
         username: '',
-        password: ''
+        password: '',
+        repassword: ''
       }
     }
   },
@@ -39,7 +43,8 @@ export default {
     login() {
       let username = this.loginInfo.username;
       let password = this.loginInfo.password;
-      LoginApi.login(username, password).then(res => {
+      let repassword = this.loginInfo.repassword;
+      LoginApi.login(username, password, repassword).then(res => {
         console.log('login', res);
       })
     }
