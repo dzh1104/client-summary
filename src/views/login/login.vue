@@ -21,7 +21,7 @@
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="login">登 录</el-button>
-      <el-button type="primary" @click="login">注 册</el-button>
+      <el-button type="primary" @click="testPost">注 册</el-button>
     </el-form-item>
   </el-form>
 </div>
@@ -46,6 +46,11 @@ export default {
       let repassword = this.loginInfo.repassword;
       LoginApi.login(username, password, repassword).then(res => {
         console.log('login', res);
+      })
+    },
+    testPost() {
+      LoginApi.testPost().then(res => {
+        console.log('testPost', res);
       })
     }
   }

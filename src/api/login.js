@@ -11,7 +11,20 @@ export default class {
     return fetch.post(path, postData).then(res => {
       return res;
     }).catch(err => {
+      console.log('err', err);
+    })
+  }
 
+  static testPost() {
+    let path = '/login/test';
+    let postData = {
+      name: 'dingzhaohua',
+      age: 20
+    };
+    return fetch.post(path, postData).then(res => {
+      return res;
+    }).catch(err => {
+      console.log('err', err);
     })
   }
 }
