@@ -51,6 +51,14 @@ const fetch = {
  * @param needAlert 是否需要弹框或额外处理
  */
 function handleResData(resData, needAlert) {
+  if (resData.data.code && needAlert) {
+    Message({
+      message: resData.data.message,
+      type: 'error',
+      duration: 3000,
+      showClose: true
+    })
+  }
   return resData;
 }
 

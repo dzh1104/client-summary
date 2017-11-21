@@ -11,7 +11,6 @@ import {
 const whiteList = ['/login']; // 不重定向白名单
 router.beforeEach((to, from, next) => {
   NProgress.start(); // 开启Progress  
-  console.log('Admin-Token', storage.getItem('Admin-Token'));
   if (storage.getItem('Admin-Token')) { // 判断是否有token
 
   } else {
