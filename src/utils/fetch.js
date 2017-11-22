@@ -8,7 +8,7 @@ import {
 //创建axios实例
 const service = axios.create({
   //api的base_url(根据环境)
-  baseURL: process.env.NODE_ENV === 'development' ? '/dev' : '',
+  baseURL: process.env.NODE_ENV === 'development' ? '/dev/dzh' : '/dzh',
   responseType: 'json',
   // 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise
   // 大于等于200 小于300 通过校验 resolve
