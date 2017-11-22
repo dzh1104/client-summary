@@ -15,6 +15,9 @@ This is an [example link](http://www.baidu.com "百度一下").
 链接语法和title
 ---
 
+## 图片
+![test pic](/pics/4-2.webpack配置修改.png "test pic")
+
 - item1 列表 - backspace / tab enter
   - item1.1
 - item2
