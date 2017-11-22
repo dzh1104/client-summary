@@ -10,7 +10,9 @@ A Second Level Header
 *emphasized* 斜体
 
 ## 链接
-This is an [example link](www.baidu.com).
+This is an [example link](http://www.baidu.com "百度一下").
+链接语法和title
+---
 
 - item1 列表 - backspace / tab enter
   - item1.1
