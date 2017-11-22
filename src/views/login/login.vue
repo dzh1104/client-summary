@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import LoginApi from "api/login";
+import LoginApi from "api/user";
 export default {
   data() {
     return {

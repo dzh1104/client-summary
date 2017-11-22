@@ -2,7 +2,7 @@ import fetch from 'utils/fetch';
 
 export default class {
   static login(username, password) {
-    let path = '/login/login';
+    let path = '/user/login';
     let reqData = {
       username,
       password
@@ -15,7 +15,7 @@ export default class {
   }
 
   static regist(username, password, repassword) {
-    let path = '/login/regist';
+    let path = '/user/regist';
     let reqData = {
       username,
       password,
