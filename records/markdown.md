@@ -31,14 +31,25 @@ This is an [example link](http://www.baidu.com "百度一下").
 | password | String | 密码   | 无   |
 
 ~~~json
+
   {
     "json": {
       "name": "dzh",
       "age": 90
     }
   }
+
 ~~~
 
 ~~~javascript
 var arr = [];
+function show() {
+  alert('show');
+}
 ~~~
+
+    var arr = [];
+      function show() {
+        alert('show');
+    }
+    
