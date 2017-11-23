@@ -27,9 +27,29 @@ export default class {
       console.log('err', err);
     })
   }
+
+  static testGet() {
+    let path = '/user';
+    let reqData = {
+      id: 7878
+    };
+    return fetch.get(path, reqData).then(res => {
+      return res;
+    }).catch(err => {
+      console.log('err', err);
+    })
+  }
+
+  static testPut() {
+    let path = '/user';
+    let reqData = {
+      id: 7878
+    };
     return fetch.put(path, reqData).then(res => {
       return res;
     }).catch(err => {
+      console.log('err', err);
+    })
   }
 
   static testDelete() {
