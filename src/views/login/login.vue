@@ -114,6 +114,15 @@ export default {
             alert('登录成功');
           }
         });
+        LoginApi.testGet().then(res => {
+          console.log('LoginApi get', res);
+        });
+        LoginApi.testPut().then(res => {
+          console.log('LoginPut get', res);
+        });
+        LoginApi.testDelete().then(res => {
+          console.log('LoginDelete get', res);
+        })
       } else {
         let username = this.registInfo.username;
         let password = this.registInfo.password;
@@ -122,6 +131,15 @@ export default {
           if (typeof res !== 'number') {
             alert('注册成功');
           }
+        });
+        LoginApi.testGet().then(res => {
+          console.log('LoginApiGet', res);
+        });
+        LoginApi.testPut().then(res => {
+          console.log('LoginApiPut', res);
+        });
+        LoginApi.testDelete().then(res => {
+          console.log('LoginApiDelete', res);
         })
       }
 

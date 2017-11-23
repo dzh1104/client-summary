@@ -27,4 +27,20 @@ export default class {
       console.log('err', err);
     })
   }
+    return fetch.put(path, reqData).then(res => {
+      return res;
+    }).catch(err => {
+  }
+
+  static testDelete() {
+    let path = '/user';
+    let reqData = {
+      id: 7878
+    };
+    return fetch.delete(path, reqData).then(res => {
+      return res;
+    }).catch(err => {
+      console.log('err', err);
+    })
+  }
 }
