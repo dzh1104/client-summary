@@ -88,7 +88,8 @@
 </template>
 
 <script>
-import LoginApi from "api/user";
+import AuthApi from "api/auth";
+import UsersApi from "api/users";
 export default {
   data() {
     return {
@@ -109,40 +110,21 @@ export default {
       if (this.type) {
         let username = this.loginInfo.username;
         let password = this.loginInfo.password;
-        LoginApi.login(username, password).then(res => {
-          if (typeof res !== 'number') {
-            alert('登录成功');
+        AuthApi.login(username, password).then(res => {
+          if (typeof res !== "number") {
+            this.$router.push({ path: '/' })
           }
         });
-        LoginApi.testGet().then(res => {
-          console.log('LoginApi get', res);
-        });
-        LoginApi.testPut().then(res => {
-          console.log('LoginPut get', res);
-        });
-        LoginApi.testDelete().then(res => {
-          console.log('LoginDelete get', res);
-        })
       } else {
         let username = this.registInfo.username;
         let password = this.registInfo.password;
         let repassword = this.registInfo.repassword;
-        LoginApi.regist(username, password, repassword).then(res => {
-          if (typeof res !== 'number') {
-            alert('注册成功');
+        UsersApi.regist(username, password, repassword).then(res => {
+          if (typeof res !== "number") {
+            alert("注册成功");
           }
         });
-        LoginApi.testGet().then(res => {
-          console.log('LoginApiGet', res);
-        });
-        LoginApi.testPut().then(res => {
-          console.log('LoginApiPut', res);
-        });
-        LoginApi.testDelete().then(res => {
-          console.log('LoginApiDelete', res);
-        })
       }
-
     },
     changeOperate() {
       this.type = !this.type;
