@@ -21,7 +21,7 @@ const service = axios.create({
 
 const fetch = {
   get(url, reqData, needAlert = true) {
-    console.log('reqData', reqData);
+    console.log('====requestData====', reqData);
     return service.get(url, {
       url: url,
       method: 'get',
@@ -33,7 +33,7 @@ const fetch = {
     })
   },
   post(url, reqData, needAlert = true) {
-    console.log('reqData', reqData);
+    console.log('====requestData====', reqData);
     return service.post(url, {
       url: url,
       method: 'post',
@@ -43,23 +43,33 @@ const fetch = {
     }).catch(error => {
       return handleError(error, needAlert);
     })
+  },
+  put(url, reqData, needAlert = true) {
+
   }
 };
 
 /**
+ * 对错误进行统一处理 不在页面中处理
  * @param resData 接口返回的数据
  * @param needAlert 是否需要弹框或额外处理
+ * @returns {Number | Object} 页面中可以通过返回的数据类型进行逻辑处理，若为Number，直接返回不做处理
  */
 function handleResData(resData, needAlert) {
+  console.log('====responseData====', resData);
+  //错误处理 利用element-ui的Message统一弹出
   if (resData.data.code && needAlert) {
     Message({
-      message: resData.data.message,
+      message: resData.data.zhmsg,
       type: 'error',
       duration: 3000,
       showClose: true
-    })
+    });
+    //返回code
+    return resData.data.code;
   }
-  return resData;
+  //返回请求返回的数据
+  return resData.data;
 }
 
 /**

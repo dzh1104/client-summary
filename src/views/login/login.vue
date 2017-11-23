@@ -110,14 +110,18 @@ export default {
         let username = this.loginInfo.username;
         let password = this.loginInfo.password;
         LoginApi.login(username, password).then(res => {
-          console.log("login", res);
+          if (typeof res !== 'number') {
+            alert('登录成功');
+          }
         });
       } else {
         let username = this.registInfo.username;
         let password = this.registInfo.password;
         let repassword = this.registInfo.repassword;
         LoginApi.regist(username, password, repassword).then(res => {
-          console.log('regist', res);
+          if (typeof res !== 'number') {
+            alert('注册成功');
+          }
         })
       }
 
