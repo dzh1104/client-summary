@@ -29,7 +29,7 @@ const fetch = {
     }).then(resData => {
       return handleResData(resData, needAlert);
     }).catch(error => {
-      return handleError(error, needAlert);
+      return handleError(error);
     })
   },
   post(url, reqData, needAlert = true) {
@@ -41,11 +41,32 @@ const fetch = {
     }).then(resData => {
       return handleResData(resData, needAlert);
     }).catch(error => {
-      return handleError(error, needAlert);
+      return handleError(error);
     })
   },
   put(url, reqData, needAlert = true) {
-
+    console.log('====requestData====', reqData);
+    return service.put(url, {
+      url: url,
+      method: 'put',
+      data: reqData
+    }).then(resData => {
+      return handleResData(resData, needAlert);
+    }).catch(error => {
+      return handleError(error);
+    })
+  },
+  delete(url, reqData, needAlert = true) {
+    console.log('====requestData====', reqData);
+    return service.delete(url, {
+      url: url,
+      method: 'delete',
+      params: reqData
+    }).then(resData => {
+      return handleResData(resData, needAlert);
+    }).catch(error => {
+      return handleError(error);
+    })
   }
 };
 
