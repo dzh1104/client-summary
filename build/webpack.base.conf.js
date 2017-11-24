@@ -43,6 +43,7 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')]
       },
+      // 使用svg-sprite-loader和配置，以及下url-loader的exclude
       {
         test: /\.svg$/,
         loader: 'svg-sprite-loader',
