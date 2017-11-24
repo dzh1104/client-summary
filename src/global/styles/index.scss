@@ -1,9 +1,10 @@
 /*
  * @Author: dzh 
  * @Date: 2017-11-24 09:52:52 
- * @Last Modified by:   dzh 
- * @Last Modified time: 2017-11-24 09:52:52 
+ * @Last Modified by: dzh
+ * @Last Modified time: 2017-11-24 15:35:53
  */
+
 //左浮动
 .fl {
   float: left;
@@ -43,4 +44,13 @@ a:hover {
   cursor: pointer;
   color: inherit;
   text-decoration: none;
+}
+
+//icon样式 http://iconfont.cn/help/detail?spm=a313x.7781069.1998910419.14&helptype=code
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }

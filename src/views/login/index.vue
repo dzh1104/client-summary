@@ -75,7 +75,7 @@
           新用户注册，请点击
         </template>
         <template v-else>
-          使用已有账号登录，请点击
+          使用已有账号登录，请点击<icon-svg icon-class="welcome" />
         </template>
         <i class="el-icon-arrow-right"></i></span>
       <el-button type="primary" @click="changeOperate" class="change-type-btn">
@@ -91,8 +91,8 @@
 /*
  * @Author: dzh 
  * @Date: 2017-11-24 09:59:50 
- * @Last Modified by:   dzh 
- * @Last Modified time: 2017-11-24 09:59:50 
+ * @Last Modified by: dzh
+ * @Last Modified time: 2017-11-24 15:27:58
  */
 import AuthApi from "api/auth";
 import UsersApi from "api/users";

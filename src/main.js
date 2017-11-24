@@ -2,7 +2,7 @@
  * @Author: dzh 
  * @Date: 2017-11-24 10:00:23 
  * @Last Modified by: dzh
- * @Last Modified time: 2017-11-24 13:44:19
+ * @Last Modified time: 2017-11-24 16:00:07
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -15,6 +15,10 @@ import './permission';
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+//register globally component
+import IconSvg from 'components/icons-svg';
+Vue.component('icon-svg', IconSvg);
 
 //引入reset.scss
 import 'global/styles/index.scss';
