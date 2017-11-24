@@ -1,3 +1,9 @@
+/*
+ * @Author: dzh 
+ * @Date: 2017-11-24 09:53:43 
+ * @Last Modified by: dzh
+ * @Last Modified time: 2017-11-24 10:05:30
+ */
 const storage = window.sessionStorage;
 
 export default class {

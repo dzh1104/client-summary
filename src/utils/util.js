@@ -1,3 +1,9 @@
+/*
+ * @Author: dzh 
+ * @Date: 2017-11-24 09:53:52 
+ * @Last Modified by:   dzh 
+ * @Last Modified time: 2017-11-24 09:53:52 
+ */
 /**@description 判断一个对象是否为空对象
  * @param {Object} obj
  * @returns {Boolean} true 空对象 false 非空对象

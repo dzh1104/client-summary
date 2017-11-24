@@ -1,3 +1,9 @@
+/*
+ * @Author: dzh 
+ * @Date: 2017-11-24 09:52:03 
+ * @Last Modified by:   dzh 
+ * @Last Modified time: 2017-11-24 09:52:03 
+ */
 import fetch from 'utils/fetch';
 
 export default class {

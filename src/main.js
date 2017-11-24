@@ -1,3 +1,9 @@
+/*
+ * @Author: dzh 
+ * @Date: 2017-11-24 10:00:23 
+ * @Last Modified by:   dzh 
+ * @Last Modified time: 2017-11-24 10:00:23 
+ */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'

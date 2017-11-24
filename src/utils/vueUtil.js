@@ -1,3 +1,9 @@
+/*
+ * @Author: dzh 
+ * @Date: 2017-11-24 09:53:57 
+ * @Last Modified by:   dzh 
+ * @Last Modified time: 2017-11-24 09:53:57 
+ */
 // 作用是将loading
 export default class vueUtil {
   static $content = null;
