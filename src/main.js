@@ -15,6 +15,8 @@ import './permission';
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import Vant from 'vant';
+import 'vant/lib/vant-css/index.css';
 
 //register globally component
 import IconSvg from 'components/icons-svg';
@@ -27,6 +29,7 @@ import 'styles/index.scss';
 import lodash from 'lodash';
 
 Vue.use(ElementUI);
+Vue.use(Vant);
 
 Vue.config.productionTip = false;
 

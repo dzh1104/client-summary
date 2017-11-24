@@ -21,6 +21,10 @@ const requireAll = requireContext => requireContext.keys().map(requireContext);
 // import all svg
 const req = require.context('./svg', false, /\.svg$/);
 requireAll(req);
+
+// 使用:
+//  1.先去阿里的iconfont下载图标 文件名为ABC.svg文件到icons-svg/svg下
+//  2.在页面中使用全局注册的组件<icon-svg icon-class="ABC"></icon-svg>
 export default {
   name: 'icon-svg',
   props: {

@@ -75,7 +75,7 @@
           新用户注册，请点击
         </template>
         <template v-else>
-          使用已有账号登录，请点击<icon-svg icon-class="welcome" />
+          使用已有账号登录，请点击
         </template>
         <i class="el-icon-arrow-right"></i></span>
       <el-button type="primary" @click="changeOperate" class="change-type-btn">
