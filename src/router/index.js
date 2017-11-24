@@ -5,10 +5,11 @@ const _import = require('./_import_' + process.env.NODE_ENV);
 
 Vue.use(Router);
 
-import Layout from 'views/layout';
+import Layout from 'views/layout/index.vue';
 
 export default new Router({
-  mode: 'hash',
+  mode: 'history', //后端支持可开
+  scrollBehavior: () => ({ y: 0 }),
   linkActiveClass: 'router-link-active',
   routes: [{
     path: '/login',
