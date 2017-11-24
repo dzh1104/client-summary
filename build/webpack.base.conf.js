@@ -27,7 +27,8 @@ module.exports = {
       'utils': path.resolve(__dirname, '../src/utils'),
       'styles': path.resolve(__dirname, '../src/styles'),
       'api': path.resolve(__dirname, '../src/api'),
-      'views': path.resolve(__dirname, '../src/views'),
+      'webV': path.resolve(__dirname, '../src/views/web'),
+      'appV': path.resolve(__dirname, '../src/views/webApp'),
       'store': path.resolve(__dirname, '../src/store'),
       'components': path.resolve(__dirname, '../src/components')
     }
