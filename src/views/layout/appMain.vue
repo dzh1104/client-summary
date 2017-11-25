@@ -3,19 +3,22 @@
 </style>
 
 <template>
-  
+  <section>
+      <transition name="fade" mode="out-in">
+          <router-view :key="key"></router-view>
+      </transition>
+  </section>
 </template>
 
 
 <script>
-/*
- * @Author: dzh 
- * @Date: 2017-11-24 09:55:47 
- * @Last Modified by: dzh
- * @Last Modified time: 2017-11-24 09:56:56
- */
 export default {
-  
+  name: 'appMain',
+  computed: {
+      key() {
+          return this.$route.name !== undefined ? this.$route.name + +new Date() : this.$route + +new Date()
+      }
+  }
 }
 </script>
 

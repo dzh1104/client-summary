@@ -114,9 +114,13 @@ function handleError(error) {
       duration: 3000,
       showClose: true
     })
+    // 返回网络请求错误的状态码(number)，以便这个接口错误判断处理(typeof res === 'number'错误)
+    return error.response.status
   } else {
     // Something happened in setting up the request that triggered an Error
     console.log('Error', error.message);
+    // 返回特殊数字0，便于错误逻辑处理
+    return 0;
   }
   console.log('error.config', error.config);
 }
