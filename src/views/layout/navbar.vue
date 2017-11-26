@@ -5,7 +5,7 @@
 <template>
   <el-menu mode="horizontal">
     <levelbar></levelbar>
-    <tabsView></tabsView>
+    <!-- <tabsView></tabsView> -->
     <el-dropdown trigger="click">
         <div>
             <img src="" alt="avatar">
@@ -22,6 +22,9 @@
                     项目地址
                 </el-dropdown-item>
             </a>
+            <el-dropdown-item divided>
+                <span @click="logout">退出登录</span>
+            </el-dropdown-item>
         </el-dropdown-menu>
     </el-dropdown>
   </el-menu>
@@ -34,6 +37,9 @@ export default {
   components: {
     levelbar,
     tabsView
+  },
+  methods: {
+    logout() {}
   }
 };
 </script>
