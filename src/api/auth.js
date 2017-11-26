@@ -23,4 +23,11 @@ export default class {
       console.log('err', err);
     })
   }
+
+  static getUserInfo() {
+    let path = '/auth/info';
+    let reqData = {
+      
+    };
+  }
 }

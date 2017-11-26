@@ -5,11 +5,14 @@
  * @Last Modified time: 2017-11-24 13:41:29
  */
 const state = {
-  username: ''
+  username: '',
+  roles: []
 };
 
 const mutations = {
-
+  SET_ROLES: (state, roles) => {
+    state.roles = roles;
+  }
 };
 
 export default {

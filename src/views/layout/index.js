@@ -5,10 +5,6 @@
  * @Last Modified time: 2017-11-24 09:57:01 
  */
 export {
-  default as tagbar
-}
-from './tagbar';
-export {
   default as navbar
 }
 from './navbar';
@@ -16,6 +12,9 @@ export {
   default as sidebar
 }
 from './sidebar';
+export {
+  default as levelbar 
+} from './levelbar';
 export {
   default as appMain
 }

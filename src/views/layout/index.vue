@@ -4,7 +4,11 @@
 
 <template>
   <div>
-      layout
+    <sidebar></sidebar>
+    <div>
+      <navbar></navbar>
+      <appMain></appMain>
+    </div>
   </div>
 </template>
 
@@ -15,9 +19,14 @@
  * @Last Modified by: dzh
  * @Last Modified time: 2017-11-24 13:43:11
  */
-import { tagbar, navbar, sidebar, appMain } from "./";
+import { navbar, sidebar, appMain } from "./";
 export default {
-
+  name: "layout",
+  components: {
+    sidebar,
+    navbar,
+    appMain
+  }
 };
 </script>
 

@@ -8,7 +8,8 @@
  * 
  */
 const getters = {
-  username: state => state.auth.username
+  username: state => state.auth.username,
+  roles: state => state.auth.roles,
 };
 
 export default getters;

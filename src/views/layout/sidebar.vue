@@ -3,19 +3,32 @@
 </style>
 
 <template>
-  
+  <el-menu mode="vertical" unique-opened :default-active="$route.path" :collapse="isCollapse">
+      <sidebarItem :routes="permissionRouters"></sidebarItem>
+  </el-menu>
 </template>
 
 <script>
-/*
- * @Author: dzh 
- * @Date: 2017-11-24 09:55:47 
- * @Last Modified by:   dzh 
- * @Last Modified time: 2017-11-24 09:55:47 
- */
+import { mapGetters } from "vuex";
+import sidebarItem from "./sidebarItem";
 export default {
-  
-}
+  components: {
+    sidebarItem
+  },
+  data() {
+    return {
+      permissionRouters: []
+    };
+  },
+  computed: {
+    //   ...mapGetters([
+    //       'permissionRouters'
+    //   ]),
+    isCollapse() {
+      return true;
+    }
+  }
+};
 </script>
 
 
