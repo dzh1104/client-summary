@@ -11,7 +11,7 @@ Vue.use(Router);
 /**
  * icon : the icon show in the sidebar
  * hidden : if `hidden:true` will not show in the sidebar
- * redirect : if `redirect:noredirect` will no redirct in the levelbar
+ * redirect : if `redirect:noredirect` will no redirect in the levelbar
  * noDropdown : if `noDropdown:true` will has no submenu
  * meta : { role: ['admin'] }  will control the page role
  **/
@@ -28,6 +28,7 @@ export const constantRouterMap = [{
   component: Layout,
   name: 'home',
   hidden: true,
+  redirect: 'home',
   children: [{
     path: 'home',
     component: _import('home/index')
@@ -46,7 +47,7 @@ export default new Router({
 export const asyncRouterMap = [{
     path: '/example',
     component: Layout,
-    redirct: 'noredirect',
+    redirect: 'noredirect',
     name: 'example',
     icon: 'zujian',
     children: [{
@@ -60,7 +61,7 @@ export const asyncRouterMap = [{
   {
     path: '/table',
     component: Layout,
-    redirct: 'tubiao',
+    redirect: 'tubiao',
     noDropdown: true,
     children: [{
       path: 'index',
@@ -74,7 +75,7 @@ export const asyncRouterMap = [{
 
   {
     path: '*',
-    redirct: '/404',
+    redirect: '/404',
     hidden: true
   }
 ];
