@@ -3,8 +3,8 @@
 </style>
 
 <template>
-  <el-menu mode="vertical" unique-opened :default-active="$route.path" :collapse="isCollapse">
-      <sidebarItem :routes="permissionRouters"></sidebarItem>
+  <el-menu mode="vertical" unique-opened :default-active="$route.path">
+      <sidebarItem :routes="routes"></sidebarItem>
   </el-menu>
 </template>
 
@@ -15,18 +15,8 @@ export default {
   components: {
     sidebarItem
   },
-  data() {
-    return {
-      permissionRouters: []
-    };
-  },
   computed: {
-    //   ...mapGetters([
-    //       'permissionRouters'
-    //   ]),
-    isCollapse() {
-      return true;
-    }
+    ...mapGetters(["routes"])
   }
 };
 </script>
