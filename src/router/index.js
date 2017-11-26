@@ -9,12 +9,12 @@ import Layout from 'views/layout/index.vue';
 Vue.use(Router);
 
 /**
-* icon : the icon show in the sidebar
-* hidden : if `hidden:true` will not show in the sidebar
-* redirect : if `redirect:noredirect` will no redirct in the levelbar
-* noDropdown : if `noDropdown:true` will has no submenu
-* meta : { role: ['admin'] }  will control the page role
-**/
+ * icon : the icon show in the sidebar
+ * hidden : if `hidden:true` will not show in the sidebar
+ * redirect : if `redirect:noredirect` will no redirct in the levelbar
+ * noDropdown : if `noDropdown:true` will has no submenu
+ * meta : { role: ['admin'] }  will control the page role
+ **/
 export const constantRouterMap = [{
   path: '/login',
   name: 'Login',
@@ -43,21 +43,18 @@ export default new Router({
   routes: constantRouterMap
 });
 
-export const asyncRouterMap = [
-  {
+export const asyncRouterMap = [{
     path: '/example',
     component: Layout,
     redirct: 'noredirect',
     name: 'example',
     icon: 'zujian',
-    children: [
-      {
-        path: 'index', 
-        name: 'form', 
-        icon: 'zonghe', 
-        component: _import('page/index')
-      }
-    ]
+    children: [{
+      path: 'index',
+      name: 'form',
+      icon: 'zonghe',
+      component: _import('page/index')
+    }]
   },
 
   {
@@ -65,16 +62,14 @@ export const asyncRouterMap = [
     component: Layout,
     redirct: 'tubiao',
     noDropdown: true,
-    children: [
-      {
-        path: 'index',
-        name: 'table',
-        component: _import('table/index'),
-        meta: {
-          role: ['admin']
-        }
+    children: [{
+      path: 'index',
+      name: 'table',
+      component: _import('table/index'),
+      meta: {
+        role: ['admin']
       }
-    ]
+    }]
   },
 
   {

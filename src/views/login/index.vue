@@ -88,14 +88,7 @@
 </template>
 
 <script>
-/*
- * @Author: dzh 
- * @Date: 2017-11-24 09:59:50 
- * @Last Modified by: dzh
- * @Last Modified time: 2017-11-24 15:27:58
- */
 import AuthApi from "api/auth";
-import UsersApi from "api/users";
 export default {
   data() {
     return {
@@ -125,7 +118,7 @@ export default {
         let username = this.registInfo.username;
         let password = this.registInfo.password;
         let repassword = this.registInfo.repassword;
-        UsersApi.regist(username, password, repassword).then(res => {
+        AuthApi.regist(username, password, repassword).then(res => {
           if (typeof res !== "number") {
             alert("注册成功");
           }

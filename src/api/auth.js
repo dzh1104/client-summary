@@ -2,10 +2,11 @@
  * @Author: dzh 
  * @Date: 2017-11-24 09:51:58 
  * @Last Modified by: dzh
- * @Last Modified time: 2017-11-26 11:03:55
+ * @Last Modified time: 2017-11-26 15:10:35
  */
 import fetch from 'utils/fetch';
 import storage from 'utils/storage';
+import store from 'store';
 
 export default class {
   static login(username, password) {
@@ -14,7 +15,7 @@ export default class {
       username,
       password
     };
-    return fetch.post(path, reqData, true).then(res => {
+    return fetch.post(path, reqData).then(res => {
       if (typeof res !== 'number') {
         storage.setItem('Admin-Token', 'pass');
       }
@@ -24,10 +25,41 @@ export default class {
     })
   }
 
-  static getUserInfo() {
+  static regist(username, password, repassword) {
+    let path = '/auth/regist';
+    let reqData = {
+      username,
+      password,
+      repassword
+    };
+    return fetch.post(path, reqData).then(res => {
+      return res;
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  static getUserInfo(username) {
     let path = '/auth/info';
     let reqData = {
-      
+      username
     };
+    return fetch.get(path, reqData).then(res => {
+      if (typeof res === 'number') {
+        return res;
+      }
+      store.commit('SET_ROLES', res.roles);
+      store.commit('SET_USERNAME', res.username);
+      store.commit('SET_AVATAR', res.avatar);
+      store.commit('SET_INTRODUCTION', res.introduction);
+      return res;
+    })
+  }
+
+  static clientLogout() {
+    return new Promise((resolve, reject) => {
+      storage.removeItem('Admin-Token');
+      resolve();
+    })
   }
 }
