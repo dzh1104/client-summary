@@ -2,7 +2,7 @@
  * @Author: dzh 
  * @Date: 2017-11-24 10:00:23 
  * @Last Modified by: dzh
- * @Last Modified time: 2017-11-26 13:05:02
+ * @Last Modified time: 2017-11-27 09:22:07
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -10,7 +10,6 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from './store';
-
 
 //添加路由钩子，控制权限
 import 'utils/permission';

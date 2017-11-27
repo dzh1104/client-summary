@@ -1,9 +1,3 @@
-/*
- * @Author: dzh 
- * @Date: 2017-11-24 09:53:38 
- * @Last Modified by:   dzh 
- * @Last Modified time: 2017-11-24 09:53:38 
- */
 // axios中文https://www.kancloud.cn/yunye/axios/234845
 import axios from 'axios';
 import CryptoJS from 'crypto-js';

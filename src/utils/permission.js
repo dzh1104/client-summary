@@ -1,9 +1,3 @@
-/*
- * @Author: dzh 
- * @Date: 2017-11-24 10:00:28 
- * @Last Modified by: dzh
- * @Last Modified time: 2017-11-26 16:05:31
- */
 import router from 'router';
 import store from 'store';
 import storage from 'utils/storage';

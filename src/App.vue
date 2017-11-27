@@ -5,12 +5,6 @@
 </template>
 
 <script>
-/*
- * @Author: dzh 
- * @Date: 2017-11-24 10:00:08 
- * @Last Modified by:   dzh 
- * @Last Modified time: 2017-11-24 10:00:08 
- */
 export default {
   name: "app"
 };
