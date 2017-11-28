@@ -31,11 +31,6 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
 
-import date from 'utils/date';
-console.log(date(new Date(), 'YYYY-MM-DD'));
-console.log(date(new Date(1000 * 60 * 1), 'YYYY-MM-DD'));
-console.log(date((new Date()).toString(), 'YYYY-MM-DD'));
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

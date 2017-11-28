@@ -1,3 +1,5 @@
+@import './sidebar.scss';
+
 //左浮动
 .fl {
   float: left;
@@ -25,6 +27,22 @@
   cursor: pointer;
 }
 
+//icon样式 http://iconfont.cn/help/detail?spm=a313x.7781069.1998910419.14&helptype=code
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+// 全局样式
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
 //a标签的样式
 a:focus,
 a:active {
@@ -37,13 +55,4 @@ a:hover {
   cursor: pointer;
   color: inherit;
   text-decoration: none;
-}
-
-//icon样式 http://iconfont.cn/help/detail?spm=a313x.7781069.1998910419.14&helptype=code
-.icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
 }

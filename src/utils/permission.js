@@ -13,7 +13,8 @@ import {
 } from 'element-ui';
 
 // register global progress
-const whiteList = ['/login']; // 不重定向白名单
+const whiteList = ['/login', '/partice']; // 不重定向白名单
+
 router.beforeEach((to, from, next) => {
   NProgress.start(); // 开启Progress  
   if (storage.getItem('Admin-Token')) { // 判断是否有token

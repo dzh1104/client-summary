@@ -1,5 +1,7 @@
 <style lang="scss" scoped>
-
+section {
+    flex: 1;
+}
 </style>
 
 <template>
