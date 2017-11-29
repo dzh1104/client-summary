@@ -240,3 +240,23 @@ function sortBy(objArr, orderFn, orderType = 'asc') {
   // 不需要返回数组，sort变异方法
   // return objArr;
 }
+
+function deepClone(source) {
+  if (!source && typeof source !== 'object') {
+    throw new Error('error arguments', 'shallowClone');
+  }
+
+  const targetObj = source.constructor === Array ? [] : {};
+  for (const key in source) {
+    if (source.hasOwnProperty(key)) {
+      if (source[key] && typeof source[key] === 'object') {
+        targetObj[key] = source[key].constructor === Array ? [] : {};
+        targetObj[key] = deepClone(source[key]);
+      } else {
+        targetObj[key] = source[key];
+      }
+    }
+  }
+
+  return targetObj;
+}

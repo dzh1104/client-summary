@@ -24,6 +24,10 @@ export const constantRouterMap = [{
   name: '404',
   component: _import('errorPage/404')
 }, {
+  path: '/partice',
+  name: 'partice',
+  component: _import('partice/index')
+}, {
   path: '/',
   component: Layout,
   name: 'home',

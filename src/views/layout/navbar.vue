@@ -1,9 +1,12 @@
 <style lang="scss" scoped>
-
+.g-navbar {
+    height: 40px;
+    line-height: 40px;
+}
 </style>
 
 <template>
-  <el-menu mode="horizontal">
+  <el-menu mode="horizontal" class="g-navbar">
     <levelbar></levelbar>
     <!-- <tabsView></tabsView> -->
     <el-dropdown trigger="click">

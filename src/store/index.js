@@ -7,12 +7,14 @@ import Vuex from 'vuex';
 import getters from './getters';
 
 import auth from './modules/auth';
+import app from './modules/app';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    auth
+    auth,
+    app
   },
   getters
 });
