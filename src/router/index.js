@@ -18,14 +18,17 @@ Vue.use(Router);
 export const constantRouterMap = [{
   path: '/login',
   name: 'Login',
+  hidden: true,
   component: _import('login/index')
 }, {
   path: '/404',
   name: '404',
+  hidden: true,
   component: _import('errorPage/404')
 }, {
   path: '/partice',
   name: 'partice',
+  hidden: true,
   component: _import('partice/index')
 }, {
   path: '/',

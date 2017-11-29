@@ -1,7 +1,7 @@
 const app = {
     state: {
         sidebar: {
-            open: false
+            open: true
         }
     }
 };

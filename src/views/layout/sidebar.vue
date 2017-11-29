@@ -11,7 +11,7 @@
     text-color="#fff"
     class="g-sidebar"
   >
-      <sidebarItem :routes="routes"></sidebarItem>
+    <sidebarItem :routes="routes"></sidebarItem>
   </el-menu>
 </template>
 
