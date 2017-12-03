@@ -19,7 +19,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 //register globally component
 import IconSvg from 'components/icons-svg';
-Vue.component('icon-svg', IconSvg);
+Vue.component('svg-icon', IconSvg);
 
 //引入reset.scss
 import 'styles/index.scss';

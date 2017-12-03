@@ -56,11 +56,17 @@ export const asyncRouterMap = [{
     component: Layout,
     redirect: 'noredirect',
     name: 'example',
-    icon: 'zujian',
+    meta: {
+      title: 'Example',
+      icon: 'example'
+    },
     children: [{
       path: 'index',
       name: 'form',
-      icon: 'zonghe',
+      meta: {
+        title: 'Form',
+        icon: 'form'
+      },
       component: _import('page/index')
     }]
   },

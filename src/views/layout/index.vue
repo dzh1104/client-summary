@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { navbar, sidebar, appMain } from "./";
+import { navbar, sidebar, appMain } from "./components";
 import { mapGetters } from 'vuex';
 export default {
   name: "layout",
