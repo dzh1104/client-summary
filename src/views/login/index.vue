@@ -1,5 +1,5 @@
 <style lang="scss">
-.login-container {
+.m-login {
   position: relative;
   width: 100%;
   min-width: 1000px;
@@ -36,7 +36,7 @@
 </style>
 
 <template>
-<div class="login-container">
+<div class="m-login">
   <el-form class="login-form">
     <h3 class="title">welcome to summary</h3>
     <template v-if="type">
