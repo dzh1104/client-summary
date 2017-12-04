@@ -9,36 +9,47 @@ import Layout from 'views/layout/index.vue';
 Vue.use(Router);
 
 /**
- * icon : the icon show in the sidebar
- * hidden : if `hidden:true` will not show in the sidebar
- * redirect : if `redirect:noredirect` will no redirect in the levelbar
- * noDropdown : if `noDropdown:true` will has no submenu
- * meta : { role: ['admin'] }  will control the page role
- **/
+* hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
+* redirect: noredirect           if `redirect:noredirect` will no redirct in the breadcrumb
+* name:'router-name'             the name is used by <keep-alive> (must set!!!)
+* meta : {
+    role: ['admin','editor']     will control the page role (you can set multiple roles)
+    title: 'title'               the name show in submenu and breadcrumb (recommend set)
+    icon: 'svg-name'             the icon show in the sidebar,
+    noCache: true                if fasle ,the page will no be cached(default is false)
+  }
+**/
 export const constantRouterMap = [{
   path: '/login',
-  name: 'Login',
-  hidden: true,
-  component: _import('login/index')
+  component: _import('login/index'),
+  hidden: true
 }, {
   path: '/404',
-  name: '404',
-  hidden: true,
-  component: _import('errorPage/404')
+  component: _import('errorPage/404'),
+  hidden: true
 }, {
   path: '/partice',
   name: 'partice',
   hidden: true,
   component: _import('partice/index')
 }, {
-  path: '/',
+  path: '/401',
+  component: _import('errorPage/401'),
+  hidden: true
+}, {
+  path: '',
   component: Layout,
-  name: 'home',
-  hidden: true,
   redirect: 'home',
+  hidden: true,
   children: [{
     path: 'home',
-    component: _import('home/index')
+    name: 'home',
+    component: _import('home/index'),
+    meta: {
+      title: 'home',
+      icon: 'home',
+      noCache: true
+    }
   }]
 }];
 
@@ -53,21 +64,22 @@ export default new Router({
 
 export const asyncRouterMap = [{
     path: '/example',
+    name: 'example',
     component: Layout,
     redirect: 'noredirect',
-    name: 'example',
     meta: {
+      role: ['admin'],
       title: 'Example',
       icon: 'example'
     },
     children: [{
       path: 'index',
       name: 'form',
+      component: _import('page/index'),
       meta: {
         title: 'Form',
         icon: 'form'
-      },
-      component: _import('page/index')
+      }
     }]
   },
 
@@ -81,7 +93,7 @@ export const asyncRouterMap = [{
       name: 'table',
       component: _import('table/index'),
       meta: {
-        role: ['admin3']
+        role: ['admin']
       }
     }]
   },

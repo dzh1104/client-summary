@@ -7,9 +7,11 @@
     mode="vertical" 
     unique-opened 
     :default-active="$route.path" 
-    background-color="#2d3a4b"
+    background-color="#304156"
     text-color="#fff"
     class="g-sidebar"
+    active-text-color="#409eff"
+    :collapse="isCollapse"
   >
     <sidebarItem :routes="routes"></sidebarItem>
   </el-menu>
@@ -23,11 +25,13 @@ export default {
     sidebarItem
   },
   data() {
-    return {
-    }
+    return {};
   },
   computed: {
-    ...mapGetters(["routes"])
+    ...mapGetters(["routes", "sidebar"]),
+    isCollapse() {
+      return !this.sidebar.opened;
+    }
   }
 };
 </script>
