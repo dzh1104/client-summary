@@ -1,3 +1,98 @@
 #app {
-    // 主体区域
+  // 主体区域
+  .g-content-wrap {
+    transition: margin-left .28s;
+    margin-left: 180px;
+  } // 侧边栏
+  .g-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
+    width: 180px !important;
+    transition: width .28s;
+    a {
+      display: inline-block;
+      width: 100%;
+    }
+    .svg-icon {
+      margin-right: 16px;
+    }
+    .el-menu {
+      width: 100%;
+      border: none;
+    }
+  }
+  .s-hide-sidebar {
+    .sidebar-container,
+    .sidebar-container .el-menu {
+      width: 36px !important; // overflow: inherit;
+    }
+    .main-container {
+      margin-left: 36px;
+    }
+  }
+  .s-hide-sidebar {
+    .submenu-title-noDropdown {
+      position: relative;
+      padding-left: 10px !important;
+      span {
+        display: inline-block;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity .3s cubic-bezier(.55, 0, .1, 1);
+      }
+      &:hover {
+        span {
+          position: absolute;
+          top: 0;
+          right: -145px;
+          z-index: 1002;
+          display: block;
+          visibility: visible;
+          width: 140px;
+          height: 56px;
+          text-align: left;
+          text-indent: 20px;
+          border-radius: 3px;
+          opacity: 1;
+          background-color: $subMenuBg !important;
+        }
+      }
+    }
+    .el-submenu {
+      &>.el-submenu__title {
+        padding-left: 10px !important;
+      }
+      &>span {
+        display: none;
+      }
+      .el-submenu__icon-arrow {
+        display: none;
+      }
+      .nest-menu {
+        .el-submenu__icon-arrow {
+          display: block !important;
+        }
+        span {
+          display: inline-block !important;
+        }
+      }
+    }
+  }
+  .nest-menu .el-submenu>.el-submenu__title,
+  .el-submenu .el-menu-item {
+    min-width: 180px !important;
+    background-color: $subMenuBg !important;
+    &:hover {
+      background-color: $menuHover !important;
+    }
+  }
+  .el-menu--collapse .el-menu .el-submenu {
+    min-width: 180px !important;
+  }
 }

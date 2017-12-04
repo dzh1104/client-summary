@@ -93,7 +93,9 @@ export const asyncRouterMap = [{
       name: 'table',
       component: _import('table/index'),
       meta: {
-        role: ['admin']
+        role: ['admin'],
+        title: 'Table',
+        icon: 'table'
       }
     }]
   },

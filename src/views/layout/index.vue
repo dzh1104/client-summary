@@ -35,7 +35,7 @@
 
 <template>
   <div class="g-app" :class="{'s-hide-sidebar': !sidebar.open}">
-    <sidebar></sidebar>
+    <sidebar class="g-sidebar"></sidebar>
     <div class="g-content-wrap">
       <navbar></navbar>
       <appMain></appMain>
