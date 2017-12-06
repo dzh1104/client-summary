@@ -1,1 +1,1 @@
-module.exports = file => () => import('webV/' + file + '.vue')
+module.exports = file => () => import('views/' + file + '.vue')
