@@ -6,3 +6,6 @@
 
 ## props也是值传递
 如果传递的是复杂数据类型，如果对其修改也会影响到父组件的数据。应该使用computed或data来处理下，再对其操作，也可以使用深复制。
+
+## this.$options.template = `<div>${this.content}</div>` 动态模板
+在content中，使用了vue的指令@click绑定事件，如果直接用v-html去渲染出来，点击事件不会生效，可以利用动态模板来实现
