@@ -7,7 +7,6 @@
     text-color="#fff"
     background-color="#304156"
     active-text-color="#409eff"
-    menu-trigger="click"
     :collapse="isCollapse"
   >
     <sidebarItem :routes="routes"></sidebarItem>
