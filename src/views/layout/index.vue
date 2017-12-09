@@ -8,6 +8,7 @@
     .m-navbar {
       height: 50px;
       line-height: 50px;
+      border-radius: 0px !important;
     }
     .m-app-main {
       flex-grow: 1;

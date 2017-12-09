@@ -1,6 +1,5 @@
 <style lang="scss" scoped>
 .m-navbar {
-  border-radius: 0px !important;
   .m-hamburger {
     float: left;
     height: 50px;
