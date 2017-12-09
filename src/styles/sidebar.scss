@@ -24,15 +24,14 @@
       width: 100%;
       border: none;
     }
-  }
+  } // sidebar隐藏部分状态下
   .s-hide-sidebar {
     .g-content-wrap {
       margin-left: 36px;
     }
     .g-sidebar,
     .g-sidebar .el-menu {
-      width: 36px!important; 
-      // overflow: inherit;
+      width: 36px!important; // overflow: inherit;
     }
   }
   .s-hide-sidebar {
