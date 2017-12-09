@@ -58,8 +58,6 @@
 </template>
 
 <script>
-import levelbar from "./levelbar";
-import tabsView from "./tabsView";
 import { mapGetters } from "vuex";
 import hamburger from "components/hamburger";
 export default {
