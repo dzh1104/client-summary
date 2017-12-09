@@ -63,27 +63,6 @@ export default new Router({
 });
 
 export const asyncRouterMap = [{
-    path: '/example',
-    name: 'example',
-    component: Layout,
-    redirect: 'noredirect',
-    meta: {
-      role: ['admin'],
-      title: 'Example',
-      icon: 'example'
-    },
-    children: [{
-      path: 'index',
-      name: 'form',
-      component: _import('page/index'),
-      meta: {
-        title: 'Form',
-        icon: 'form'
-      }
-    }]
-  },
-
-  {
     path: '/table',
     component: Layout,
     redirect: 'tubiao',
@@ -97,6 +76,84 @@ export const asyncRouterMap = [{
         icon: 'table'
       }
     }]
+  },
+
+  {
+    path: '/icon',
+    component: Layout,
+    children: [{
+      path: 'index',
+      component: _import('svg-icons/index'),
+      name: 'icons',
+      meta: {
+        title: 'icons',
+        icon: 'icon',
+        noCache: true
+      }
+    }]
+  },
+
+  {
+    path: '/example',
+    component: Layout,
+    redirect: 'table/complex-table',
+    name: 'example',
+    meta: {
+      title: 'example',
+      icon: 'example'
+    },
+    children: [{
+        path: 'table',
+        component: _import('example/table/index'),
+        name: 'Table',
+        meta: {
+          title: 'Table',
+          icon: 'table'
+        },
+        children: [{
+            path: 'dynamic-table',
+            component: _import('example/table/dynamicTable/index'),
+            name: 'dynamicTable',
+            meta: {
+              title: 'dynamicTable'
+            }
+          },
+          {
+            path: 'drag-table',
+            component: _import('example/table/dragTable'),
+            name: 'dragTable',
+            meta: {
+              title: 'dragTable'
+            }
+          },
+          {
+            path: 'inline-edit-table',
+            component: _import('example/table/inlineEditTable'),
+            name: 'inlineEditTable',
+            meta: {
+              title: 'inlineEditTable'
+            }
+          },
+          {
+            path: 'complex-table',
+            component: _import('example/table/complexTable'),
+            name: 'complexTable',
+            meta: {
+              title: 'complexTable'
+            }
+          }
+        ]
+      },
+      {
+        path: 'tab',
+        icon: 'tab',
+        component: _import('example/tab/index'),
+        name: 'tab',
+        meta: {
+          title: 'tab'
+        }
+      }
+    ]
   },
 
   {

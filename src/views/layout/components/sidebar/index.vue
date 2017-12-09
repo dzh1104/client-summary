@@ -1,16 +1,13 @@
-<style lang="scss" scoped>
-
-</style>
-
 <template>
   <el-menu 
+    class="g-sidebar"
     mode="vertical" 
     unique-opened 
     :default-active="$route.path" 
-    background-color="#304156"
     text-color="#fff"
-    class="g-sidebar"
+    background-color="#304156"
     active-text-color="#409eff"
+    menu-trigger="click"
     :collapse="isCollapse"
   >
     <sidebarItem :routes="routes"></sidebarItem>
@@ -23,9 +20,6 @@ import sidebarItem from "./sidebarItem";
 export default {
   components: {
     sidebarItem
-  },
-  data() {
-    return {};
   },
   computed: {
     ...mapGetters(["routes", "sidebar"]),
