@@ -2,7 +2,6 @@
 .m-icons {
   display: flex;
   flex-wrap: wrap;
-  margin: 10px 20px 0;
   .icon-item {
     display: flex;
     justify-content: center;
@@ -10,12 +9,15 @@
     width: 120px;
     height: 120px;
     margin: 8px;
-    font-size: 18px;
     text-align: center;
     // border: 1px dotted blue;
     // border-radius: 10px;
+    .svg-icon {
+      font-size: 30px;
+      color: #409eff;
+    }
     .u-icon {
-
+      font-size: 18px;
     }
   }
 }
