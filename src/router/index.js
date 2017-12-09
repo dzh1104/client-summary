@@ -65,7 +65,7 @@ export default new Router({
 export const asyncRouterMap = [{
     path: '/table',
     component: Layout,
-    redirect: 'tubiao',
+    redirect: 'index',
     children: [{
       path: 'index',
       name: 'table',
