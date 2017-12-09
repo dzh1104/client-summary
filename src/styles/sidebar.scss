@@ -20,7 +20,7 @@
     .svg-icon {
       margin-right: 16px;
     }
-    .el-menu {
+    &.el-menu {
       width: 100%;
       border: none;
     }
@@ -31,7 +31,7 @@
     }
     .g-sidebar,
     .g-sidebar .el-menu {
-      width: 36px!important; // overflow: inherit;
+      width: 36px !important; // overflow: inherit;
     }
   }
   .s-hide-sidebar {
@@ -77,10 +77,10 @@
       }
       .nest-menu {
         .el-submenu__icon-arrow {
-          display: block!important;
+          display: block !important;
         }
         span {
-          display: inline-block!important;
+          display: inline-block !important;
         }
       }
     }
@@ -88,12 +88,12 @@
   .nest-menu .el-submenu>.el-submenu__title,
   .el-submenu .el-menu-item {
     min-width: 180px !important;
-    background-color: $subMenuBg!important;
+    background-color: $subMenuBg !important;
     &:hover {
-      background-color: $menuHover!important;
+      background-color: $menuHover !important;
     }
   }
   .el-menu--collapse .el-menu .el-submenu {
-    min-width: 180px!important;
+    min-width: 180px !important;
   }
 }

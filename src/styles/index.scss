@@ -58,6 +58,7 @@ body {
 *:before,
 *:after {
   box-sizing: inherit;
+  outline: none;
 }
 
 //a标签的样式

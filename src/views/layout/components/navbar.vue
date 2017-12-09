@@ -61,10 +61,6 @@
 import { mapGetters } from "vuex";
 import hamburger from "components/hamburger";
 export default {
-  components: {
-    levelbar,
-    tabsView
-  },
   data() {
     return {
       avatar:
