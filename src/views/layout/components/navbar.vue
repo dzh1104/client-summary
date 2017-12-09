@@ -1,6 +1,12 @@
 <style lang="scss" scoped>
 .m-navbar {
   border-radius: 0px !important;
+  .m-hamburger {
+    float: left;
+    height: 50px;
+    padding: 0 10px;
+    line-height: 50px;
+  }
   .m-operation-area {
     float: right; // 父级已设置高度 不需要用伪类清除浮动
     height: 100%;
@@ -23,7 +29,7 @@
 <template>
   <el-menu mode="horizontal" class="m-navbar">
 
-    <Hamburger class="Hamburger-container"></hamburger>
+    <hamburger class="m-hamburger"></hamburger>
 
     <!-- 右侧操作区 -->
     <div class="m-operation-area">
@@ -56,7 +62,7 @@
 import levelbar from "./levelbar";
 import tabsView from "./tabsView";
 import { mapGetters } from "vuex";
-import Hamburger from "components/hamburger";
+import hamburger from "components/hamburger";
 export default {
   components: {
     levelbar,
@@ -75,7 +81,7 @@ export default {
     logout() {}
   },
   components: {
-    Hamburger
+    hamburger
   }
 };
 </script>
