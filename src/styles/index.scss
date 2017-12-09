@@ -1,17 +1,17 @@
 @import './sidebar.scss';
 
 //左浮动
-.fl {
+.f-fl {
   float: left;
 }
 
 //右浮动
-.fr {
+.f-fr {
   float: right;
 }
 
 //清除浮动
-.clearfix {
+.f-clearfix {
   &:after {
     visibility: hidden;
     display: block;
@@ -23,7 +23,7 @@
 }
 
 //光标样式
-.cur {
+.f-cur {
   cursor: pointer;
 }
 

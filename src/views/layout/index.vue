@@ -6,8 +6,8 @@
     flex-direction: column;
     height: 100%;
     .m-navbar {
-      height: 40px;
-      line-height: 40px;
+      height: 50px;
+      line-height: 50px;
     }
     .m-app-main {
       flex-grow: 1;
