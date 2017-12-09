@@ -1,3 +1,24 @@
+<style lang="scss" scoped>
+.g-app {
+  height: 100%;
+  .g-content-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .m-navbar {
+      height: 40px;
+      line-height: 40px;
+    }
+    .m-app-main {
+      flex-grow: 1;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+}
+</style>
+
+
 <template>
   <div class="g-app" :class="{'s-hide-sidebar': !sidebar.open}">
     <sidebar class="g-sidebar"></sidebar>
@@ -10,7 +31,7 @@
 
 <script>
 import { navbar, sidebar, appMain } from "./components";
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 export default {
   name: "layout",
   components: {
@@ -19,9 +40,7 @@ export default {
     appMain
   },
   computed: {
-    ...mapGetters([
-      'sidebar'
-    ])
+    ...mapGetters(["sidebar"])
   }
 };
 </script>

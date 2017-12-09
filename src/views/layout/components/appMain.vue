@@ -1,11 +1,8 @@
 <style lang="scss" scoped>
-section {
-    flex: 1;
-}
 </style>
 
 <template>
-  <section>
+  <section class="m-app-main">
       <transition name="fade" mode="out-in">
           <router-view :key="key"></router-view>
       </transition>
