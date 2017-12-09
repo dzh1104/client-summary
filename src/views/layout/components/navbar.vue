@@ -12,11 +12,12 @@
     margin-right: 10px;
     .m-avatar-container {
       height: 100%;
-      margin-top: 5px;
+      // margin-top: 5px;
       .avatar-wrap {
         .u-img {
           width: 40px;
           height: 40px;
+          vertical-align: middle;
           border-radius: 10px;
         }
       }
