@@ -87,7 +87,6 @@ export const asyncRouterMap = [{
     path: '/table',
     component: Layout,
     redirect: 'tubiao',
-    noDropdown: true,
     children: [{
       path: 'index',
       name: 'table',
