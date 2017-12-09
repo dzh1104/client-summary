@@ -37,7 +37,7 @@ export const constantRouterMap = [{
   component: _import('errorPage/401'),
   hidden: true
 }, {
-  path: '',
+  path: '/',
   component: Layout,
   redirect: 'home',
   hidden: true,
