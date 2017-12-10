@@ -204,6 +204,14 @@ export const asyncRouterMap = [{
         title: 'timeout',
         icon: 'timeout'
       }
+    }, {
+      path: 'dytemp',
+      component: _import('advance/dytemp/index'),
+      name: 'dytemp',
+      meta: {
+        title: 'dytemp',
+        icon: 'dytemp'
+      }
     }]
   },
 

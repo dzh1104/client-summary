@@ -1,4 +1,5 @@
 <style lang="scss" scoped>
+
 </style>
 
 <template>
@@ -12,12 +13,23 @@
 
 <script>
 export default {
-  name: 'appMain',
+  name: "appMain",
   computed: {
-      key() {
-          return this.$route.name !== undefined ? this.$route.name + +new Date() : this.$route + +new Date()
-      }
+    key() {
+      return this.$route.name !== undefined
+        ? this.$route.name + +new Date()
+        : this.$route + +new Date();
+    }
+  },
+  methods: {
+    // 被子组件触发的事件
+    triggerBySub() {
+      this.$message({
+        message: "被子组件触发的事件",
+        type: "warning"
+      });
+    }
   }
-}
+};
 </script>
 

@@ -55,12 +55,21 @@ export default {
       return i.default.id.split("-")[1];
     });
     this.iconsMap = iconsMap;
+    console.log('iconsMap', iconsMap);
   },
   methods: {
     generateIconCode(symbol) {
       return `<svg-icon icon-class="${symbol}" />`;
     },
     handleClipboard(text, event) {
+      console.log('text', text);
+      console.log('event', event);
+      if (event.target.nodeName === 'svg') {
+        alert('svg');
+      }
+      if (event.target.nodeName === 'use') {
+        alert('use');
+      }
       clipboard(text, event);
     }
   }
