@@ -61,6 +61,7 @@
 <script>
 import { mapGetters } from "vuex";
 import hamburger from "components/hamburger";
+import authApi from 'api/auth';
 export default {
   data() {
     return {
@@ -72,7 +73,11 @@ export default {
     ...mapGetters(["sidebar"])
   },
   methods: {
-    logout() {}
+    logout() {
+      authApi.clientLogout().then(res => {
+        this.$router.push({ path: '/login' });
+      })
+    }
   },
   components: {
     hamburger

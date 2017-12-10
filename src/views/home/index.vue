@@ -1,9 +1,11 @@
 <style lang="scss" scoped>
-
+.m-home {
+  padding: 30px;
+}
 </style>
 
 <template>
-  <div>
+  <div class="m-home">
     home
   </div>
 </template>

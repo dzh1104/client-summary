@@ -37,10 +37,11 @@ export const constantRouterMap = [{
   component: _import('errorPage/401'),
   hidden: true
 }, {
-  path: '/',
+  // 没有匹配到合适的子路由。如果你想要渲染点什么，可以提供一个 空的 子路由
+  path: '', // 空路由
   component: Layout,
-  redirect: 'home',
-  hidden: true,
+  redirect: 'home', // 这个需要重定向，这个和sidebar区分开，没有匹配到时，直接重定向到home，而sidebar中的路径是点击跳转的路由路径
+  // hidden: true,
   children: [{
     path: 'home',
     name: 'home',
@@ -211,6 +212,33 @@ export const asyncRouterMap = [{
       meta: {
         title: 'dytemp',
         icon: 'dytemp'
+      }
+    }]
+  },
+
+  {
+    path: '/components',
+    component: Layout,
+    name: 'components',
+    meta: {
+      title: 'components',
+      icon: 'component'
+    },
+    children: [{
+      path: 'dialog',
+      component: _import('components/dialog/index'),
+      name: 'dialog',
+      meta: {
+        title: 'dialog',
+        icon: 'dialog'
+      }
+    }, {
+      path: 'input',
+      component: _import('components/input/index'),
+      name: 'input',
+      meta: {
+        title: 'input',
+        icon: 'input'
       }
     }]
   },
