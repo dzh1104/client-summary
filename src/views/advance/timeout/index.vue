@@ -41,11 +41,7 @@ export default {
     // vue的方式绑定滚轮事件，元素渲染就会绑定
     handleMousewheel(e) {
       // e.preventDefault();
-      console.log(123);
-      this.$message({
-        message: "scroll",
-        type: "success"
-      });
+      console.log("mousewheel");
     }
   },
   mounted() {

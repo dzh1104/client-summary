@@ -181,6 +181,14 @@ export const asyncRouterMap = [{
       icon: 'advance'
     },
     children: [{
+      path: 'api',
+      component: _import('advance/api/index'),
+      name: 'api',
+      meta: {
+        title: 'api',
+        icon: 'api'
+      }
+    }, {
       path: 'dblclick',
       component: _import('advance/dblclick/index'),
       name: 'dblclick',
