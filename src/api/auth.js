@@ -47,6 +47,8 @@ export default class {
       store.commit('SET_AVATAR', res.avatar);
       store.commit('SET_INTRODUCTION', res.introduction);
       return res;
+    }).catch(err => {
+      return err;
     })
   }
 

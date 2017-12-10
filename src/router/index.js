@@ -65,7 +65,6 @@ export default new Router({
 export const asyncRouterMap = [{
     path: '/table',
     component: Layout,
-    redirect: 'index',
     children: [{
       path: 'index',
       name: 'table',
@@ -96,27 +95,44 @@ export const asyncRouterMap = [{
   {
     path: '/example',
     component: Layout,
-    redirect: 'table/complex-table',
+    // redirect: '/example/table/dynamic-table/drag-table',
     name: 'example',
     meta: {
       title: 'example',
       icon: 'example'
     },
     children: [{
-        path: 'table',
+        path: '/example/table',
         component: _import('example/table/index'),
+        // redirect: '/example/table/dynamic-table/drag-table',
         name: 'Table',
         meta: {
           title: 'Table',
           icon: 'table'
         },
         children: [{
-            path: 'dynamic-table',
+            path: '/example/table/dynamic-table',
             component: _import('example/table/dynamicTable/index'),
+            // redirct: '/example/table/dynamic-table/drag-table',
             name: 'dynamicTable',
             meta: {
               title: 'dynamicTable'
-            }
+            },
+            children: [{
+              path: 'drag-table',
+              component: _import('example/table/dragTable'),
+              name: 'dragTable2',
+              meta: {
+                title: 'dragTable'
+              }
+            }, {
+              path: 'drag-table3',
+              component: _import('example/table/dragTable'),
+              name: 'dragTable3',
+              meta: {
+                title: 'dragTable'
+              }
+            }]
           },
           {
             path: 'drag-table',
@@ -154,6 +170,33 @@ export const asyncRouterMap = [{
         }
       }
     ]
+  },
+
+  {
+    path: '/advance',
+    component: Layout,
+    name: 'advance',
+    meta: {
+      title: '进阶',
+      icon: 'advance'
+    },
+    children: [{
+      path: 'dblclick',
+      component: _import('advance/dblclick/index'),
+      name: 'dblclick',
+      meta: {
+        title: 'dblclick',
+        icon: 'dblclick'
+      }
+    }, {
+      path: 'timeout',
+      component: _import('advance/timeout/index'),
+      name: 'timeout',
+      meta: {
+        title: 'timeout',
+        icon: 'timeout'
+      }
+    }]
   },
 
   {

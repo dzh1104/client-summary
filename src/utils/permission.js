@@ -31,14 +31,15 @@ router.beforeEach((to, from, next) => {
       if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
         authApi.getUserInfo().then(res => { // 拉取user_info
           const roles = res.roles;
-          console.log('roles', roles);
           const asyncRoutes = getAsyncRoutes(roles); // 动态添加可访问路由表
           router.addRoutes(asyncRoutes);
           next({...to}); // hack方法 确保addRoutes已完成
         }).catch(err => {
+          console.error('authApi.getUserInfo', err);
           authApi.clientLogout().then(res => {
             Message.error('验证失败,请重新登录');
             next({ path: '/login' })
+            NProgress.done();
           })
         })
       } else {
