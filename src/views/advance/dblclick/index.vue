@@ -33,28 +33,28 @@ export default {
   data() {
     return {
       timer: null
-    }
+    };
   },
   methods: {
     handleClick() {
       this.timer && clearTimeout(this.timer);
       this.timer = setTimeout(() => {
         this.$message({
-          message: '我被单击了',
+          message: "我被单击了",
           showClose: true,
-          type: 'success'
-        })
+          type: "success"
+        });
       }, 300);
     },
     handleDblClick() {
       this.timer && clearTimeout(this.timer);
       this.$message({
-        message: '我被双击了',
-          showClose: true,
-          type: 'warning'
-        })
+        message: "我被双击了",
+        showClose: true,
+        type: "warning"
+      });
     }
   }
-}
+};
 </script>
 

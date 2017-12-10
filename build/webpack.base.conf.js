@@ -3,6 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require('webpack')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -24,6 +25,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'jquery': 'jquery',
       'utils': path.resolve(__dirname, '../src/utils'),
       'styles': path.resolve(__dirname, '../src/styles'),
       'api': path.resolve(__dirname, '../src/api'),
@@ -33,6 +35,12 @@ module.exports = {
       'components': path.resolve(__dirname, '../src/components')
     }
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
+  ],
   module: {
     rules: [{
         test: /\.vue$/,

@@ -177,7 +177,7 @@ export const asyncRouterMap = [{
     component: Layout,
     name: 'advance',
     meta: {
-      title: '进阶',
+      title: 'advance',
       icon: 'advance'
     },
     children: [{

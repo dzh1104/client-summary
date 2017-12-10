@@ -89,3 +89,15 @@ code {
     }
   }
 }
+
+/* 滚动条样式 */
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8899a7;
+  border-radius: 4px;
+}
