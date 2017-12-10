@@ -51,7 +51,7 @@ export default {
       this.$message({
         message: '我被双击了',
           showClose: true,
-          type: 'success'
+          type: 'warning'
         })
     }
   }
