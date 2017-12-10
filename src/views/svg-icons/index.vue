@@ -62,17 +62,14 @@ export default {
       return `<svg-icon icon-class="${symbol}" />`;
     },
     handleClipboard(text, event) {
-      console.log('text', text);
-      console.log('event', event);
       if (event.target.nodeName === 'svg') {
-        alert('svg');
+        return;
       }
       if (event.target.nodeName === 'use') {
-        alert('use');
+        return;
       }
       clipboard(text, event);
     }
   }
 };
 </script>
-
