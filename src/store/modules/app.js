@@ -1,12 +1,12 @@
 const app = {
   state: {
     sidebar: {
-      open: true
+      isOpen: false
     }
   },
   mutations: {
     SET_SIDEBAR_OPEN: (state) => {
-      state.sidebar.open = !state.sidebar.open;
+      state.sidebar.isOpen = !state.sidebar.isOpen;
     }
   }
 };

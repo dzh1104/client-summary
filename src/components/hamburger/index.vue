@@ -35,7 +35,7 @@ export default {
       'sidebar'
     ]),
     isActive() {
-      return this.sidebar.open
+      return this.sidebar.isOpen
     }
   },
   methods: {

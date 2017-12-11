@@ -21,7 +21,7 @@
 
 
 <template>
-  <div class="g-app" :class="{'s-hide-sidebar': !sidebar.open}">
+  <div class="g-app" :class="{'s-hide-sidebar': !sidebar.isOpen}">
     <sidebar class="g-sidebar"></sidebar>
     <div class="g-content-wrap">
       <navbar></navbar>
