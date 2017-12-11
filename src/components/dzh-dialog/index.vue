@@ -4,6 +4,8 @@
 
 <template>
   <div class="m-dialog">
+    <!-- :visible.sync="dialogVisibleData" -->
+    <!-- @close="handleClose" -->
     <el-dialog
       :visible.sync="dialogVisibleComputed"
       :title="title"
@@ -19,8 +21,9 @@
       :show-close="showClose"
       :before-close="handleBeforeClose"
       :center="center"
-      @close="handleClose"
-      @open="handleOpen"
+      @close="close"
+      @open="open"
+      @click.native="handleClick"
     >
 
     </el-dialog>
@@ -82,15 +85,36 @@ export default {
       default: true
     },
     beforeClose: {
-      type: Function
+      type: Function,
+      default() {
+        return function() {};
+      }
     },
     center: {
       type: Boolean,
       default: false
+    },
+    close: {
+      type: Function,
+      default() {
+        return function() {};
+      }
+    },
+    open: {
+      type: Function,
+      default() {
+        return function() {};
+      }
     }
   },
   data() {
     return {
+      // 单向数据流 动态prop
+      // :visible.sync="dialogVisibleData"
+      // handleClose() {
+      // this.$emit('update:dialogVisible', false);
+      // }
+      // this.dialogVisible为true才能看到效果，因为使用data处理prop，不能动态改变
       dialogVisibleData: this.dialogVisible
     };
   },
@@ -99,29 +123,29 @@ export default {
       get() {
         return this.dialogVisible;
       },
+      // Computed property "dialogVisibleComputed" was assigned to but it has no setter.
       set(newVal) {
-        console.log('newVal', newVal); // false
-        this.$emit('update:dialogVisible', newVal);
+        console.log("newVal", newVal); // false
+        // el-dialog组件的子组件相关关闭事件通过this.$emit('update:visible', false)设置 dialogVisibleComputed的值为false，会触发dialogVisibleComputed的setter，在setter中通过自定义事件再去设置外层的值
+        this.$emit("update:dialogVisible", newVal);
       }
     }
   },
   methods: {
-    handleClose() {
-      // this.$emit('update:dialogVisible', false);
-    },
-    handleOpen() {
-    },
+    // handleClose() {
+    //   this.$emit('update:dialogVisible', false);
+    // },
     handleBeforeClose(done) {
       this.beforeClose().then(res => {
-        done();
+        done(); // 调用done关闭dialog
       });
-      // this.$confirm("确认关闭？")
-      //   .then(_ => {
-      //     // done();
-      //     this.$emit('update:dialogVisible', false);
-      //   })
-      //   .catch(_ => {});
+    },
+    handleClick() {
+      console.log("this.dialogVisibleComputed", this.dialogVisibleComputed);
     }
+  },
+  created() {
+    console.log('this.close', this.close);
   }
 };
 </script>
