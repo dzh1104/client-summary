@@ -1,33 +1,77 @@
-<style lang="scss" scoped>
-
+<style lang="scss">
+.m-dialog {
+  .el-dialog {
+    height: 80%;
+    .el-dialog__header {
+      height: 50px;
+      padding-top: 10px;
+      background-color: $dialogTitleBg;
+      .dzh-dialog-title {
+        height: 30px;
+        line-height: 30px;
+        font-size: $dialog_title;
+        color: #fff;
+        text-align: center;
+      }
+      .dzh-dialog-footer {
+        display: block;
+      }
+      .el-dialog__headerbtn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        .el-dialog__close {
+          font-size: 30px;
+          color: #fff;
+        }
+      }
+    }
+    .el-dialog__footer {
+      color: red;
+    }
+    .el-dialog__body {
+      height: calc(100% - 120px);
+      overflow: auto;
+    }
+  }
+}
 </style>
 
 <template>
-  <div class="m-dialog">
-    <!-- :visible.sync="dialogVisibleData" -->
-    <!-- @close="handleClose" -->
-    <el-dialog
-      :visible.sync="dialogVisibleComputed"
-      :title="title"
-      :fullscreen="fullscreen"
-      :top="top"
-      :modal="modal"
-      :modal-append-to-body="modalAppendToBody"
-      :append-to-body="appendToBody"
-      :lock-scroll="lockScroll"
-      :custom-class="customClass"
-      :close-on-click-modal="closeOnClickModal"
-      :close-on-press-escape="closeOnPressEscape"
-      :show-close="showClose"
-      :before-close="handleBeforeClose"
-      :center="center"
-      @close="close"
-      @open="open"
-      @click.native="handleClick"
-    >
-
-    </el-dialog>
-  </div>
+  <!-- :visible.sync="dialogVisibleData" -->
+  <!-- @close="handleClose" -->
+  <el-dialog
+    :visible.sync="dialogVisibleComputed"
+    :title="title"
+    :fullscreen="fullscreen"
+    :top="top"
+    :modal="modal"
+    :modal-append-to-body="modalAppendToBody"
+    :append-to-body="appendToBody"
+    :lock-scroll="lockScroll"
+    :custom-class="customClass"
+    :close-on-click-modal="closeOnClickModal"
+    :close-on-press-escape="closeOnPressEscape"
+    :show-close="showClose"
+    :before-close="handleBeforeClose"
+    :center="center"
+    @close="close"
+    @open="open"
+    @click.native="handleClick"
+    class="m-dialog"
+    :class="['dialog-height']"
+  >
+    <!-- slot title -->
+    <div slot="title" class="dzh-dialog-title">
+      {{title}}
+    </div>
+    <p>这是一个段落</p>
+    <p>这是一个段落</p>
+    <div slot="footer" class="dzh-dialog-footer">
+      <slot name="footer"></slot>
+      <el-button type="primary">footer</el-button>
+    </div>
+  </el-dialog>
 </template>
 
 <script>
@@ -51,7 +95,7 @@ export default {
     },
     top: {
       type: String,
-      default: "15vh"
+      default: "8vh"
     },
     modal: {
       type: Boolean,
@@ -145,7 +189,7 @@ export default {
     }
   },
   created() {
-    console.log('this.close', this.close);
+    console.log("this.close", this.close);
   }
 };
 </script>

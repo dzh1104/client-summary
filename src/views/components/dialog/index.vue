@@ -5,7 +5,7 @@
 <template>
   <div>
       <el-button type="primary" @click="openDialog">show</el-button>
-      <dzh-dialog :dialogVisible.sync="dialogVisible" :modal="true" :appendToBody="true" :beforeClose="beforeClose" :center="true" :close="close"></dzh-dialog>
+      <dzh-dialog :dialogVisible.sync="dialogVisible" :modal="true" :appendToBody="true" :beforeClose="beforeClose" :close="close" :closeOnClickModal="false"></dzh-dialog>
   </div>
 </template>
 
