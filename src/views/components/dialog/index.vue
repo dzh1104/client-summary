@@ -1,11 +1,108 @@
 <style lang="scss" scoped>
-
+.m-dialog-demo {
+  padding: 30px;
+  .u-button {
+    margin-bottom: 30px;
+  }
+}
 </style>
 
 <template>
-  <div>
-      <el-button type="primary" @click="openDialog">show</el-button>
-      <dzh-dialog :dialogVisible.sync="dialogVisible" :modal="true" :appendToBody="true" :beforeClose="beforeClose" :close="close" :closeOnClickModal="false"></dzh-dialog>
+  <div class="m-dialog-demo">
+      <code>
+        正常dialog
+      </code>
+      <el-button type="primary" @click="openNormalDialog" class="u-button">normal</el-button>
+      <dzh-dialog 
+        :dialogVisible.sync="normalDialogVisible" 
+        :modal="true" 
+        :appendToBody="true" 
+        :beforeClose="beforeClose" 
+        :close="close" 
+        :closeOnClickModal="false"
+      >
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <div slot="footer">
+          <el-button type="primary">footer</el-button>
+        </div>
+      </dzh-dialog>
+
+      <code>
+        全屏dialog
+      </code>
+      <el-button type="primary" @click="openFullDialog" class="u-button">full</el-button>
+      <dzh-dialog 
+        :dialogVisible.sync="fullDialogVisible" 
+        :modal="true" 
+        :appendToBody="true" 
+        :beforeClose="beforeClose" 
+        :close="close" 
+        :closeOnClickModal="false"
+        :fullscreen="true"
+      >
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <p>这是占位</p>
+        <div slot="footer">
+          <el-button type="primary">footer</el-button>
+        </div>
+      </dzh-dialog>
   </div>
 </template>
 
@@ -18,19 +115,28 @@ export default {
   },
   data() {
     return {
-      dialogVisible: false
+      normalDialogVisible: false,
+      fullDialogVisible: false
     };
   },
   methods: {
     beforeClose() {
       this.$message({ message: "before-close关闭前的回调 done用于控制是否关闭dialog" });
       return new Promise((resolve, reject) => {
-        // do something ...
-        resolve();
+        if (true) {
+          // do something ...
+          resolve(true);
+          return;
+        }
+        // do another something ...
+        resolve(false);
       })
     },
-    openDialog() {
-      this.dialogVisible = true;
+    openNormalDialog() {
+      this.normalDialogVisible = true;
+    },
+    openFullDialog() {
+      this.fullDialogVisible = true;
     },
     close() {
       // do something...

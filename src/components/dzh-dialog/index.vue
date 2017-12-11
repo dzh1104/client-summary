@@ -1,7 +1,13 @@
 <style lang="scss">
 .m-dialog {
   .el-dialog {
-    height: 80%;
+    display: flex;
+    flex-direction: column;
+    min-height: 50%;
+    max-height: 80%;
+    &.is-fullscreen {
+      max-height: 100%;
+    }
     .el-dialog__header {
       height: 50px;
       padding-top: 10px;
@@ -12,9 +18,6 @@
         font-size: $dialog_title;
         color: #fff;
         text-align: center;
-      }
-      .dzh-dialog-footer {
-        display: block;
       }
       .el-dialog__headerbtn {
         position: absolute;
@@ -27,10 +30,11 @@
       }
     }
     .el-dialog__footer {
-      color: red;
+      height: 65px;
     }
     .el-dialog__body {
-      height: calc(100% - 120px);
+      flex-grow: 1;
+      padding: 0;
       overflow: auto;
     }
   }
@@ -59,17 +63,14 @@
     @open="open"
     @click.native="handleClick"
     class="m-dialog"
-    :class="['dialog-height']"
   >
     <!-- slot title -->
     <div slot="title" class="dzh-dialog-title">
       {{title}}
     </div>
-    <p>这是一个段落</p>
-    <p>这是一个段落</p>
-    <div slot="footer" class="dzh-dialog-footer">
-      <slot name="footer"></slot>
-      <el-button type="primary">footer</el-button>
+    <slot></slot>
+    <div slot="footer">
+      <slot name="footer"></slot>      
     </div>
   </el-dialog>
 </template>
@@ -181,7 +182,10 @@ export default {
     // },
     handleBeforeClose(done) {
       this.beforeClose().then(res => {
-        done(); // 调用done关闭dialog
+        if (res) {
+          done(); // 调用done关闭dialog
+          return;
+        }
       });
     },
     handleClick() {

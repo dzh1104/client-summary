@@ -1,7 +1,7 @@
 const app = {
   state: {
     sidebar: {
-      isOpen: false
+      isOpen: true
     }
   },
   mutations: {
