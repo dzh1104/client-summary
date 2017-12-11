@@ -240,6 +240,14 @@ export const asyncRouterMap = [{
         title: 'input',
         icon: 'input'
       }
+    }, {
+      path: 'backtotop',
+      component: _import('components/backToTop/index'),
+      name: 'backtotop',
+      meta: {
+        title: 'backtotop',
+        icon: 'up'
+      }
     }]
   },
 
