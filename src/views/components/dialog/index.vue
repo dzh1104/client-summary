@@ -16,10 +16,9 @@
       <dzh-dialog 
         :dialogVisible.sync="normalDialogVisible" 
         :modal="true" 
-        :appendToBody="true" 
+        :modalAppendToBody="false"
         :beforeClose="beforeClose" 
-        :close="close" 
-        :closeOnClickModal="false"
+        :hasFooter="true"
       >
         <p>这是占位</p>
         <p>这是占位</p>
@@ -46,7 +45,7 @@
         <p>这是占位</p>
         <p>这是占位</p>
         <div slot="footer">
-          <el-button type="primary">footer</el-button>
+          <el-button type="primary" @click="closeDialog">关闭</el-button>
         </div>
       </dzh-dialog>
 
@@ -59,9 +58,10 @@
         :modal="true" 
         :appendToBody="true" 
         :beforeClose="beforeClose" 
-        :close="close" 
         :closeOnClickModal="false"
         :fullscreen="true"
+        :hasFooter="true"
+        :close="close"
       >
         <p>这是占位</p>
         <p>这是占位</p>
@@ -120,6 +120,9 @@ export default {
     };
   },
   methods: {
+    closeDialog() {
+      this.normalDialogVisible = false;
+    },
     beforeClose() {
       this.$message({ message: "before-close关闭前的回调 done用于控制是否关闭dialog" });
       return new Promise((resolve, reject) => {

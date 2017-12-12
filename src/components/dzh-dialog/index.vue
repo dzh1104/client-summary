@@ -1,42 +1,43 @@
 <style lang="scss">
-.m-dialog {
-  .el-dialog {
-    display: flex;
-    flex-direction: column;
-    min-height: 50%;
-    max-height: 80%;
-    &.is-fullscreen {
-      max-height: 100%;
+.el-dialog {
+  display: flex;
+  flex-direction: column;
+  min-height: 50%;
+  max-height: 80%;
+  &.is-fullscreen {
+    max-height: 100%;
+  }
+  .el-dialog__header {
+    height: 50px;
+    padding-top: 10px;
+    background-color: $dialogTitleBg;
+    .dzh-dialog-title {
+      height: 30px;
+      line-height: 30px;
+      font-size: $dialog_title;
+      color: #fff;
+      text-align: center;
     }
-    .el-dialog__header {
-      height: 50px;
-      padding-top: 10px;
-      background-color: $dialogTitleBg;
-      .dzh-dialog-title {
-        height: 30px;
-        line-height: 30px;
-        font-size: $dialog_title;
+    .el-dialog__headerbtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      .el-dialog__close {
+        font-size: 30px;
         color: #fff;
-        text-align: center;
-      }
-      .el-dialog__headerbtn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        .el-dialog__close {
-          font-size: 30px;
-          color: #fff;
-        }
       }
     }
-    .el-dialog__footer {
-      height: 65px;
+  }
+  .el-dialog__footer {
+    height: 65px;
+    .s-has-footer {
+      color: red;
     }
-    .el-dialog__body {
-      flex-grow: 1;
-      padding: 0;
-      overflow: auto;
-    }
+  }
+  .el-dialog__body {
+    flex-grow: 1;
+    padding: 0;
+    overflow: auto;
   }
 }
 </style>
@@ -62,14 +63,13 @@
     @close="close"
     @open="open"
     @click.native="handleClick"
-    class="m-dialog"
   >
     <!-- slot title -->
     <div slot="title" class="dzh-dialog-title">
       {{title}}
     </div>
     <slot></slot>
-    <div slot="footer">
+    <div slot="footer" v-if="hasFooter">
       <slot name="footer"></slot>      
     </div>
   </el-dialog>
@@ -150,6 +150,11 @@ export default {
       default() {
         return function() {};
       }
+    },
+    // 在父级加slot="footer" 还需要设置:hasFooter="true"
+    hasFooter: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -172,7 +177,7 @@ export default {
       set(newVal) {
         console.log("newVal", newVal); // false
         // el-dialog组件的子组件相关关闭事件通过this.$emit('update:visible', false)设置 dialogVisibleComputed的值为false，会触发dialogVisibleComputed的setter，在setter中通过自定义事件再去设置外层的值
-        this.$emit("update:dialogVisible", newVal);
+        this.$emit("update:dialogVisible", false);
       }
     }
   },
