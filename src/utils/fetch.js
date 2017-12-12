@@ -19,9 +19,11 @@ const service = axios.create({
   timeout: 6000
 });
 
+let beforeFetchHash;
+
 const fetch = {
   get(url, reqData, needAlert = true) {
-    console.log('====requestData====', reqData);
+    setBeforeFetchHash();
     return service.get(url, {
       url: url,
       method: 'get',
@@ -33,7 +35,7 @@ const fetch = {
     })
   },
   post(url, reqData, needAlert = true) {
-    console.log('====requestData====', reqData);
+    setBeforeFetchHash();
     return service.post(url, {
       url: url,
       method: 'post',
@@ -45,7 +47,7 @@ const fetch = {
     })
   },
   put(url, reqData, needAlert = true) {
-    console.log('====requestData====', reqData);
+    setBeforeFetchHash();
     return service.put(url, {
       url: url,
       method: 'put',
@@ -57,7 +59,7 @@ const fetch = {
     })
   },
   delete(url, reqData, needAlert = true) {
-    console.log('====requestData====', reqData);
+    setBeforeFetchHash();
     return service.delete(url, {
       url: url,
       method: 'delete',
@@ -70,6 +72,10 @@ const fetch = {
   }
 };
 
+function setBeforeFetchHash() {
+  // 路由mode开启history 使用window.location.pathname
+  beforeFetchHash = window.location.hash;
+}
 /**
  * 对错误进行统一处理 不在页面中处理
  * @param resData 接口返回的数据
@@ -77,7 +83,10 @@ const fetch = {
  * @returns {Number | Object} 页面中可以通过返回的数据类型进行逻辑处理，若为Number，直接返回不做处理
  */
 function handleResData(resData, needAlert) {
-  console.log('====responseData====', resData);
+  if (window.location.hash !== beforeFetchHash) {
+    return;
+  }
+  console.log('response data', resData);
   //错误处理 利用element-ui的Message统一弹出
   if (resData.data.code && needAlert) {
     Message({
@@ -100,7 +109,6 @@ function handleResData(resData, needAlert) {
 function handleError(error) {
   if (error.response) {
     // 请求已发出，但服务器响应的状态码不在 2xx 范围内
-    console.log('error.response', error.response);
     // 利用element-ui的Message统一弹出
     Message({
       message: error.response.status,

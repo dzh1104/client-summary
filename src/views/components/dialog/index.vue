@@ -14,7 +14,7 @@
       </code>
       <el-button type="primary" @click="openNormalDialog" class="u-button">normal</el-button>
       <dzh-dialog 
-        :dialogVisible.sync="normalDialogVisible" 
+        :dialogVisible="false" 
         :modal="true" 
         :modalAppendToBody="false"
         :beforeClose="beforeClose" 

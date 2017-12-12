@@ -16,7 +16,7 @@ const requireAll = requireContext => requireContext.keys().map(requireContext);
 // import all svg
 const req = require.context('./svg', false, /\.svg$/);
 const iconMap = requireAll(req);
-console.log('svg');
+
 generateIconsView.generate(iconMap);
 // 使用:
 //  1.先去阿里的iconfont下载图标 文件名为ABC.svg文件到icons-svg/svg下

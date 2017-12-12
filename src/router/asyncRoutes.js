@@ -43,7 +43,6 @@ function filterAsyncRouter(asyncRouterMap, roles) {
     }
     return false;
   });
-  console.log('accessedRouters filterAsyncRouter', accessedRouters);
   return accessedRouters;
 }
 
@@ -54,7 +53,6 @@ export function getAsyncRoutes(roles) {
   } else {
     accessedRouters = filterAsyncRouter(asyncRouterMap, roles);
   }
-  console.log('accessedRouters getAsyncRoutes', accessedRouters);
   store.commit('SET_ASYNCROUTES', accessedRouters);
   store.commit('SET_ROUTES', accessedRouters);
   return accessedRouters;

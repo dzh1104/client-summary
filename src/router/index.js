@@ -64,21 +64,6 @@ export default new Router({
 });
 
 export const asyncRouterMap = [{
-    path: '/table',
-    component: Layout,
-    children: [{
-      path: 'index',
-      name: 'table',
-      component: _import('table/index'),
-      meta: {
-        role: ['admin'],
-        title: 'Table',
-        icon: 'table'
-      }
-    }]
-  },
-
-  {
     path: '/icon',
     component: Layout,
     children: [{
@@ -97,7 +82,7 @@ export const asyncRouterMap = [{
     path: '/example',
     component: Layout,
     // redirect: '/example/table/dynamic-table/drag-table',
-    name: 'example',
+    // name: 'example',
     meta: {
       title: 'example',
       icon: 'example'
@@ -176,7 +161,7 @@ export const asyncRouterMap = [{
   {
     path: '/advance',
     component: Layout,
-    name: 'advance',
+    // name: 'advance',
     meta: {
       title: 'advance',
       icon: 'advance'
@@ -187,7 +172,8 @@ export const asyncRouterMap = [{
       name: 'api',
       meta: {
         title: 'api',
-        icon: 'api'
+        icon: 'api',
+        isCache: true
       }
     }, {
       path: 'dblclick',
@@ -195,7 +181,8 @@ export const asyncRouterMap = [{
       name: 'dblclick',
       meta: {
         title: 'dblclick',
-        icon: 'dblclick'
+        icon: 'dblclick',
+        isCache: true
       }
     }, {
       path: 'timeout',
@@ -203,7 +190,8 @@ export const asyncRouterMap = [{
       name: 'timeout',
       meta: {
         title: 'timeout',
-        icon: 'timeout'
+        icon: 'timeout',
+        isCache: true
       }
     }, {
       path: 'dytemp',
@@ -211,7 +199,8 @@ export const asyncRouterMap = [{
       name: 'dytemp',
       meta: {
         title: 'dytemp',
-        icon: 'dytemp'
+        icon: 'dytemp',
+        isCache: true
       }
     }]
   },
@@ -219,7 +208,7 @@ export const asyncRouterMap = [{
   {
     path: '/components',
     component: Layout,
-    name: 'components',
+    // name: 'components',
     meta: {
       title: 'components',
       icon: 'component'
@@ -230,7 +219,8 @@ export const asyncRouterMap = [{
       name: 'dialog',
       meta: {
         title: 'dialog',
-        icon: 'dialog'
+        icon: 'dialog',
+        isCache: true
       }
     }, {
       path: 'input',
@@ -254,7 +244,7 @@ export const asyncRouterMap = [{
   {
     path: '/chart',
     component: Layout,
-    name: 'chart',
+    // name: 'chart',
     meta: {
       title: 'chart',
       icon: 'chart'

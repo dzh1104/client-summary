@@ -25,6 +25,9 @@
 
 <template>
   <div class="m-icons">
+    <div>
+      <el-button type="primary" @click="change">change</el-button>
+    </div>
     <div class="icon-item f-cur" v-for="(item, index) in iconsMap" :key="index" @click="handleClipboard(generateIconCode(item),$event)">
       <el-tooltip placement="top">
         <div slot="content">
@@ -47,7 +50,8 @@ export default {
   name: "icons",
   data() {
     return {
-      iconsMap: []
+      iconsMap: [],
+      flag: true
     };
   },
   mounted() {
@@ -55,7 +59,6 @@ export default {
       return i.default.id.split("-")[1];
     });
     this.iconsMap = iconsMap;
-    console.log('iconsMap', iconsMap);
   },
   methods: {
     generateIconCode(symbol) {
@@ -69,6 +72,10 @@ export default {
         return;
       }
       clipboard(text, event);
+    },
+    change() {
+      alert(2);
+      this.flag = false;
     }
   }
 };

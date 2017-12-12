@@ -6,12 +6,11 @@
   <section class="m-app-main">
       <transition name="fade" mode="out-in">
           <keep-alive :include="cachedViews">
-            <router-view :key="key"></router-view>
+            <router-view></router-view>
           </keep-alive>
       </transition>
   </section>
 </template>
-
 
 <script>
 import { mapGetters } from 'vuex';
@@ -34,6 +33,11 @@ export default {
         message: "被子组件触发的事件",
         type: "warning"
       });
+    }
+  },
+  watch: {
+    cachedViews(newVal) {
+      console.log('newVal', newVal);
     }
   }
 };
