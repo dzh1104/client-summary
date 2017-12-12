@@ -5,16 +5,22 @@
 <template>
   <section class="m-app-main">
       <transition name="fade" mode="out-in">
-          <router-view :key="key"></router-view>
+          <keep-alive :include="cachedViews">
+            <router-view :key="key"></router-view>
+          </keep-alive>
       </transition>
   </section>
 </template>
 
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: "appMain",
   computed: {
+    ...mapGetters([
+      'cachedViews'
+    ]),
     key() {
       return this.$route.name !== undefined
         ? this.$route.name + +new Date()

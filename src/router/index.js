@@ -16,7 +16,7 @@ Vue.use(Router);
     role: ['admin','editor']     will control the page role (you can set multiple roles)
     title: 'title'               the name show in submenu and breadcrumb (recommend set)
     icon: 'svg-name'             the icon show in the sidebar,
-    noCache: true                if fasle ,the page will no be cached(default is false)
+    isCache: true                if fasle ,the page will no be cached(default is false)
   }
 **/
 export const constantRouterMap = [{
@@ -49,7 +49,7 @@ export const constantRouterMap = [{
     meta: {
       title: 'home',
       icon: 'home',
-      noCache: true
+      isCache: true
     }
   }]
 }];
@@ -88,7 +88,7 @@ export const asyncRouterMap = [{
       meta: {
         title: 'icons',
         icon: 'icon',
-        noCache: true
+        isCache: true
       }
     }]
   },
@@ -274,6 +274,14 @@ export const asyncRouterMap = [{
       meta: {
         title: 'line',
         icon: 'line'
+      }
+    }, {
+      path: 'map',
+      component: _import('chart/map/index'),
+      name: 'chart-map',
+      meta: {
+        title: 'map',
+        icon: 'map'
       }
     }]
   },

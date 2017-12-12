@@ -8,7 +8,9 @@ const getters = {
   routes: state => state.auth.routes,
 
   // app
-  sidebar: state => state.app.sidebar
+  sidebar: state => state.app.sidebar,
+  visitedViews: state => state.app.visitedViews,
+  cachedViews: state => state.app.cachedViews
 };
 
 export default getters;
