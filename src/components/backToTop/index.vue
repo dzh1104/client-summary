@@ -1,17 +1,27 @@
 <style lang="scss" scoped>
-.m-back-to-top {
+.back-to-top {
   position: fixed;
   display: inline-block;
   text-align: center;
   transition: 0.3s;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
 
 <template>
 	<transition :name="transitionName">
 		<div 
-			class="m-back-to-top f-cur"
+			class="back-to-top f-cur"
 			@click="backToTop"
 			v-show="visible"
 			:style="customStyle"
@@ -27,12 +37,12 @@ export default {
     transitionName: {
       type: String,
       default: "fade"
-		},
-		visibilityHeight: {
+    },
+    visibilityHeight: {
       type: Number,
       default: 400
-		},
-		backPosition: {
+    },
+    backPosition: {
       type: Number,
       default: 0
     },
@@ -41,7 +51,7 @@ export default {
       default() {
         return {
           right: "100px",
-          bottom: "150px",
+          bottom: "100px",
           width: "40px",
           height: "40px",
           "line-height": "45px",
@@ -60,18 +70,22 @@ export default {
   },
   methods: {
     handleScroll() {
-      this.visible = window.pageYOffset > this.visibilityHeight;
+      // this.visible = window.pageYOffset > this.visibilityHeight
+      this.visible = $(".m-app-main").scrollTop() > this.visibilityHeight;
     },
     backToTop() {
-      const start = window.pageYOffset;
+      // const start = window.pageYOffset;
+      const start = $(".m-app-main").scrollTop();
       let i = 0;
       this.interval = setInterval(() => {
         const next = Math.floor(this.easeInOutQuad(10 * i, start, -start, 500));
         if (next <= this.backPosition) {
-          window.scrollTo(0, this.backPosition);
+          // window.scrollTo(0, this.backPosition);
+          $(".m-app-main").scrollTop(this.backPosition);
           clearInterval(this.interval);
         } else {
-          window.scrollTo(0, next);
+          // window.scrollTo(0, next);
+          $(".m-app-main").scrollTop(next);
         }
         i++;
       }, 16.7);
@@ -82,11 +96,12 @@ export default {
     }
   },
   mounted() {
-		$('.m-back-to-top').on('scroll', this.handleScroll);
     // window.addEventListener("scroll", this.handleScroll);
+    $(".m-app-main").on("scroll", this.handleScroll);
   },
   beforeDestroy() {
-    $('.m-back-to-top').on('scroll', this.handleScroll);
+    // window.removeEventListener("scroll", this.handleScroll);
+    $(".m-app-main").off("scroll", this.handleScroll);
     if (this.interval) {
       clearInterval(this.interval);
     }

@@ -20,30 +20,32 @@
         :beforeClose="beforeClose" 
         :hasFooter="true"
       >
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
-        <p>这是占位</p>
+        <div v-if="normalDialogVisible">
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+          <p>这是占位</p>
+        </div>
         <div slot="footer">
           <el-button type="primary" @click="closeDialog">关闭</el-button>
         </div>
@@ -133,7 +135,7 @@ export default {
         }
         // do another something ...
         resolve(false);
-      })
+      });
     },
     openNormalDialog() {
       this.normalDialogVisible = true;
@@ -143,7 +145,7 @@ export default {
     },
     close() {
       // do something...
-      alert('通过prop传入close回调');
+      alert("通过prop传入close回调");
     }
   }
 };
