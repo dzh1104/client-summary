@@ -252,6 +252,33 @@ export const asyncRouterMap = [{
   },
 
   {
+    path: '/chart',
+    component: Layout,
+    name: 'chart',
+    meta: {
+      title: 'chart',
+      icon: 'chart'
+    },
+    children: [{
+      path: 'bar',
+      component: _import('chart/bar/index'),
+      name: 'chart-bar',
+      meta: {
+        title: 'bar',
+        icon: 'bar'
+      }
+    }, {
+      path: 'line',
+      component: _import('chart/line/index'),
+      name: 'chart-line',
+      meta: {
+        title: 'line',
+        icon: 'line'
+      }
+    }]
+  },
+
+  {
     path: '*',
     redirect: '/404',
     hidden: true

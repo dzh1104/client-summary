@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import echarts from 'echarts';
 export default {
   name: "app",
   methods: {
@@ -16,9 +15,6 @@ export default {
         type: "warning"
       });
     }
-  },
-  created() {
-    console.log('echarts', echarts);
   }
 };
 </script>

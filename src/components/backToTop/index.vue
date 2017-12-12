@@ -71,6 +71,7 @@ export default {
   methods: {
     handleScroll() {
       // this.visible = window.pageYOffset > this.visibilityHeight
+      console.log('正在滚动...');
       this.visible = $(".m-app-main").scrollTop() > this.visibilityHeight;
     },
     backToTop() {
