@@ -59,7 +59,6 @@
         :dialogVisible.sync="fullDialogVisible" 
         :modal="true" 
         :appendToBody="true" 
-        :beforeClose="beforeClose" 
         :closeOnClickModal="false"
         :fullscreen="true"
         :hasFooter="true"
@@ -130,8 +129,8 @@ export default {
       return new Promise((resolve, reject) => {
         if (true) {
           // do something ...
+          console.log('do something ...');
           resolve(true);
-          return;
         }
         // do another something ...
         resolve(false);

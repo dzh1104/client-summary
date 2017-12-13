@@ -130,10 +130,8 @@ export default {
       default: true
     },
     beforeClose: {
-      type: Function,
-      default() {
-        return function() {};
-      }
+      // 父级不传 为undefined 返回一个Promise的函数
+      type: Function 
     },
     center: {
       type: Boolean,
@@ -186,12 +184,19 @@ export default {
     //   this.$emit('update:dialogVisible', false);
     // },
     handleBeforeClose(done) {
-      this.beforeClose().then(res => {
-        if (res) {
-          done(); // 调用done关闭dialog
-          return;
-        }
-      });
+      if (this.beforeClose) {
+        this.beforeClose().then(res => {
+          if (res) {
+            done(); // 调用done关闭dialog
+          }
+        });
+        return;
+      }
+      this.$message({
+        message: '父级没有传beforeClose prop',
+        type: 'success'
+      })
+      done();
     },
     handleClick() {
       console.log("this.dialogVisibleComputed", this.dialogVisibleComputed);
