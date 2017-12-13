@@ -19,7 +19,7 @@ Vue.use(Router);
     isCache: true                if fasle ,the page will no be cached(default is false)
   }
 **/
-// 最后一级的路由name必须加，为了isCache，组件的name同名
+// 最后一级的路由name必须加，为了isCache，组件的name同名，组件的name属性方便在vue devtools调试
 export const constantRouterMap = [{
   path: '/login',
   component: _import('login/index'),
