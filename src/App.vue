@@ -6,7 +6,15 @@
 
 <script>
 import { mapMutations } from 'vuex';
+import incrementalUpdate from 'utils/incrementalUpdate';
 export default {
+  created() {
+    console.log('incrementalUpdate', incrementalUpdate);
+    let recordData = incrementalUpdate.getRecordData(1, 'auth.login', {
+      name: ['a']
+    });
+    console.log('recordData', recordData);
+  },
   name: "app",
   methods: {
     ...mapMutations([
