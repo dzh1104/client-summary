@@ -8,7 +8,8 @@
 <script>
 import dzhInput from 'components/dzh-input';
 export default {
-  name: 'input',
+  // [Vue warn]: Do not use built-in or reserved HTML elements as component id: input => inputDemo
+  name: 'inputDemo',
   components: {
     dzhInput
   }

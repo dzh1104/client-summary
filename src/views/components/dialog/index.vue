@@ -111,7 +111,7 @@
 <script>
 import dzhDialog from "components/dzh-dialog";
 export default {
-  name: "dialog",
+  name: "dialogDemo",
   components: {
     dzhDialog
   },

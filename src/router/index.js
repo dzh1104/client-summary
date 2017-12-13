@@ -199,6 +199,14 @@ export const asyncRouterMap = [{
         title: 'dytemp',
         icon: 'dytemp'
       }
+    }, {
+      path: 'refresh',
+      component: _import('advance/refresh/index'),
+      name: 'refresh',
+      meta: {
+        title: 'refresh',
+        icon: 'refresh'
+      }
     }]
   },
 
