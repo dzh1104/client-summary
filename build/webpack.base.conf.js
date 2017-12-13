@@ -41,6 +41,12 @@ module.exports = {
       jQuery: "jquery"
     })
   ],
+  // 在服务端lib下存放固定版本的外部库，在index.html中指向服务端指定地址
+  // externals: {
+  //   'element-ui': 'ELEMENT',
+  //   'vue': 'Vue',
+  //   'vue-router': 'VueRouter',
+  // },
   module: {
     rules: [{
         test: /\.vue$/,
