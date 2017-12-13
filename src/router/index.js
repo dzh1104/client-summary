@@ -11,7 +11,7 @@ Vue.use(Router);
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
 * redirect: noredirect           if `redirect:noredirect` will no redirct in the breadcrumb
-* name:'router-name'             the name is used by <keep-alive> (must set!!!)
+* name:'router-name'             the name is used by <keep-alive :include="cachedViews"> the same name as the views component (must set!!!)
 * meta : {
     role: ['admin','editor']     will control the page role (you can set multiple roles)
     title: 'title'               the name show in submenu and breadcrumb (recommend set)
@@ -19,6 +19,7 @@ Vue.use(Router);
     isCache: true                if fasle ,the page will no be cached(default is false)
   }
 **/
+// 最后一级的路由name必须加，为了isCache，组件的name同名
 export const constantRouterMap = [{
   path: '/login',
   component: _import('login/index'),
@@ -44,8 +45,8 @@ export const constantRouterMap = [{
   // hidden: true,
   children: [{
     path: 'home',
-    name: 'home',
     component: _import('home/index'),
+    name: 'home',
     meta: {
       title: 'home',
       icon: 'home',
@@ -172,8 +173,7 @@ export const asyncRouterMap = [{
       name: 'api',
       meta: {
         title: 'api',
-        icon: 'api',
-        isCache: true
+        icon: 'api'
       }
     }, {
       path: 'dblclick',
@@ -181,8 +181,7 @@ export const asyncRouterMap = [{
       name: 'dblclick',
       meta: {
         title: 'dblclick',
-        icon: 'dblclick',
-        isCache: true
+        icon: 'dblclick'
       }
     }, {
       path: 'timeout',
@@ -190,8 +189,7 @@ export const asyncRouterMap = [{
       name: 'timeout',
       meta: {
         title: 'timeout',
-        icon: 'timeout',
-        isCache: true
+        icon: 'timeout'
       }
     }, {
       path: 'dytemp',
@@ -199,8 +197,7 @@ export const asyncRouterMap = [{
       name: 'dytemp',
       meta: {
         title: 'dytemp',
-        icon: 'dytemp',
-        isCache: true
+        icon: 'dytemp'
       }
     }]
   },
@@ -219,8 +216,7 @@ export const asyncRouterMap = [{
       name: 'dialog',
       meta: {
         title: 'dialog',
-        icon: 'dialog',
-        isCache: true
+        icon: 'dialog'
       }
     }, {
       path: 'input',
@@ -233,7 +229,7 @@ export const asyncRouterMap = [{
     }, {
       path: 'backtotop',
       component: _import('components/backToTop/index'),
-      name: 'backtotop',
+      name: 'backToTopDemo',
       meta: {
         title: 'backtotop',
         icon: 'up'

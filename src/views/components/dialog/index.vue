@@ -14,7 +14,7 @@
       </code>
       <el-button type="primary" @click="openNormalDialog" class="u-button">normal</el-button>
       <dzh-dialog 
-        :dialogVisible="false" 
+        :dialogVisible.sync="normalDialogVisible" 
         :modal="true" 
         :modalAppendToBody="false"
         :beforeClose="beforeClose" 
@@ -111,7 +111,7 @@
 <script>
 import dzhDialog from "components/dzh-dialog";
 export default {
-  name: "dialogDemo",
+  name: "dialog",
   components: {
     dzhDialog
   },

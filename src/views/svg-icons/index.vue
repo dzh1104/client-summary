@@ -74,7 +74,6 @@ export default {
       clipboard(text, event);
     },
     change() {
-      alert(2);
       this.flag = false;
     }
   }
