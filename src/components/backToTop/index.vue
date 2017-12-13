@@ -25,6 +25,7 @@
 			@click="backToTop"
 			v-show="visible"
 			:style="customStyle"
+      :isAnimation="isAnimation"
 		>
 			<i class="el-icon-caret-top"></i>
 		</div>
@@ -60,6 +61,10 @@ export default {
           background: "#fff"
         };
       }
+    },
+    isAnimation: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -75,6 +80,10 @@ export default {
       this.visible = $(".m-app-main").scrollTop() > this.visibilityHeight;
     },
     backToTop() {
+      if (!this.isAnimation) {
+        $(".m-app-main").scrollTop(0);
+        return;
+      }
       // const start = window.pageYOffset;
       const start = $(".m-app-main").scrollTop();
       let i = 0;
