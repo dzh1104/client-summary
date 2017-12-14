@@ -40,3 +40,8 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+function test(n, x = 2, y = 3) {
+  return n + x + y;
+}
+// console.log('test res', test(10, y = 4)); python可以
