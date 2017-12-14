@@ -2,7 +2,6 @@
 .m-login {
   position: relative;
   width: 100%;
-  min-width: 1000px;
   height: 100vh;
   background-color: $bg;
   display: flex;

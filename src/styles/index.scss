@@ -44,10 +44,15 @@ body {
 }
 
 html {
+  font-family: sans-serif;
   box-sizing: border-box;
 }
 
 body {
+  min-width: 1020px;
+  line-height: 1.5;
+  color: #24292e;
+  background-color: #fff;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
