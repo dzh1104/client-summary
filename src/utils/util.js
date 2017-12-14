@@ -16,6 +16,7 @@ export function isEmptyObj(obj) {
 /**
  * @description 参数调用Object.prototype.toString方法，返回其返回值
  * @param {*} arg 
+ * @returns {String} [object Array] ...
  */
 export function checkType(arg) {
   return Object.prototype.toString.call(arg);
