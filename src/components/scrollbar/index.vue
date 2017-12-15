@@ -21,7 +21,7 @@ export default {
       console.log("e", e);
       console.log(1234);
       console.log("e.wheelDelta", e.wheelDelta, e.deltaY);
-      const eventDelta = e.wheelDelta || -e.deltaY * 3;
+      const eventDelta = e.wheelDelta || -e.deltaY * 2;
       const $container = this.$refs.scrollContainer;
       const $containerHeight = $container.offsetHeight;
       const $wrapper = this.$refs.scrollWrapper;
