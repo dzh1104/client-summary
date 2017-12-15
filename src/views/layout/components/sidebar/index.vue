@@ -1,7 +1,6 @@
 <template>
   <scrollBar>
     <el-menu 
-      class="g-sidebar"
       mode="vertical" 
       unique-opened 
       text-color="#fff"

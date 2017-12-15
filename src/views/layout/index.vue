@@ -19,7 +19,6 @@
 }
 </style>
 
-
 <template>
   <div class="g-app" :class="{'s-hide-sidebar': !sidebar.isOpen}">
     <sidebar class="g-sidebar"></sidebar>

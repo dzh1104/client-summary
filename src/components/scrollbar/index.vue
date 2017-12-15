@@ -1,5 +1,5 @@
 <template>
-  <div class="scroll-container" ref="scrollContainer" @wheel.prevent="handleScroll" >
+  <div class="scroll-container" ref="scrollContainer" @wheel.prevent="handleScroll">
     <div class="scroll-wrapper" ref="scrollWrapper" :style="{top: top + 'px'}">
       <slot></slot>
     </div>
@@ -18,14 +18,15 @@ export default {
   },
   methods: {
     handleScroll(e) {
+      console.log("e", e);
       console.log(1234);
-      console.log('e.wheelDelta', e.wheelDelta, e.deltaY);
+      console.log("e.wheelDelta", e.wheelDelta, e.deltaY);
       const eventDelta = e.wheelDelta || -e.deltaY * 3;
       const $container = this.$refs.scrollContainer;
       const $containerHeight = $container.offsetHeight;
       const $wrapper = this.$refs.scrollWrapper;
       const $wrapperHeight = $wrapper.offsetHeight;
-      console.log('eventDelta', eventDelta);
+      console.log("eventDelta", eventDelta);
       if (eventDelta > 0) {
         this.top = Math.min(0, this.top + eventDelta);
       } else {
@@ -53,11 +54,10 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: red;
   .scroll-wrapper {
     position: absolute;
     width: 100% !important;
-    height: 100% !important;
+    // height: 100% !important;
   }
 }
 </style>
