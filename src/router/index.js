@@ -207,6 +207,14 @@ export const asyncRouterMap = [{
         title: 'refresh',
         icon: 'refresh'
       }
+    }, {
+      path: 'dom',
+      component: _import('advance/dom/index'),
+      name: 'dom',
+      meta: {
+        title: 'dom',
+        icon: 'dom'
+      }
     }]
   },
 
