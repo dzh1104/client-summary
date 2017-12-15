@@ -32,7 +32,8 @@ module.exports = {
       'views': path.resolve(__dirname, '../src/views'),
       'store': path.resolve(__dirname, '../src/store'),
       'router': path.resolve(__dirname, '../src/router'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
+      'vendor': path.resolve(__dirname, '../src/vendor')
     }
   },
   plugins: [

@@ -289,6 +289,20 @@ export const asyncRouterMap = [{
   },
 
   {
+    path: '/zip',
+    component: Layout,
+    children: [{
+      path: 'index',
+      component: _import('zip/index'),
+      name: 'zip',
+      meta: {
+        title: 'zip',
+        icon: 'zip'
+      }
+    }]
+  },
+
+  {
     path: '*',
     redirect: '/404',
     hidden: true
