@@ -18,15 +18,11 @@ export default {
   },
   methods: {
     handleScroll(e) {
-      console.log("e", e);
-      console.log(1234);
-      console.log("e.wheelDelta", e.wheelDelta, e.deltaY);
       const eventDelta = e.wheelDelta || -e.deltaY * 2;
       const $container = this.$refs.scrollContainer;
       const $containerHeight = $container.offsetHeight;
       const $wrapper = this.$refs.scrollWrapper;
       const $wrapperHeight = $wrapper.offsetHeight;
-      console.log("eventDelta", eventDelta);
       if (eventDelta > 0) {
         this.top = Math.min(0, this.top + eventDelta);
       } else {
@@ -43,7 +39,6 @@ export default {
           this.top = 0;
         }
       }
-      console.log("this.top", this.top);
     }
   }
 };
