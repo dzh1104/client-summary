@@ -16,13 +16,13 @@
       float: left;
       height: 20px;
       margin-top: 15px;
-      margin-right: 8px;
+      margin-right: 10px;
     }
     .m-avatar-container {
       float: left;
       height: 50px;
+      margin-top: -2px;
       margin-right: 8px;
-      // margin-top: 5px;
       .avatar-wrap {
         .u-img {
           width: 40px;
