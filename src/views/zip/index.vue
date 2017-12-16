@@ -12,6 +12,7 @@
 
 <template>
   <div class="m-zip">
+    <el-button type="primary" @click="creatPatient" style="display: block; margin-bottom: 20px;">创建患者</el-button>
     <el-input 
       placeholder="请输入文件名(默认file)" 
       prefix-icon="el-icon-document" 
@@ -88,6 +89,7 @@
 </template>
 
 <script>
+import PatientApi from 'api/patient';
 export default {
   data() {
     return {
@@ -149,6 +151,22 @@ export default {
     },
     formatJson(filterVal, jsonData) {
       return jsonData.map(v => filterVal.map(j => v[j]));
+    },
+    creatPatient() {
+      PatientApi.getPtList({
+        username: 'a',
+        patient: {
+          name: 'dingzhaohua',
+          age: 20,
+          disease: [],
+          discoveryTime: 123456,
+          genderCode: 1,
+          weight: 180,
+          height: 140,
+          remark: '没毛病',
+          mobile: 120
+        }
+      });
     }
   }
 };

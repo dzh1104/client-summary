@@ -1,9 +1,9 @@
 import fetch from 'utils/fetch';
 
 export default class {
-  static getPtList() {
+  static getPtList(newPtInfo) {
     let path = '/patients';
-    let reqData = {};
+    let reqData = newPtInfo;
     return fetch.post(path, reqData).then(res => {
       return res;
     }).catch(err => {
