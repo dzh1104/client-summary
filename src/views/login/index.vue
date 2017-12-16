@@ -94,7 +94,7 @@
   </el-form>
 
   <canvas width="100%" height="100%"></canvas>
-  <canvas width="100%" height="100%" id="canvas"></canvas>
+  <!-- <canvas width="100%" height="100%" id="canvas"></canvas> -->
 </div>
 </template>
 
@@ -192,10 +192,11 @@ export default {
     document.onclick = i;
     document.ontouchstart = i;
     i();
-  },
-  mounted() {
-    this.drawBackgound = new drawBackgound();
   }
+  // ,
+  // mounted() {
+  //   this.drawBackgound = new drawBackgound();
+  // }
 };
 // canvas绘制动态背景
 function drawBackgound() {

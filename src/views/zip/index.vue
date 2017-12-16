@@ -29,8 +29,15 @@
       导出zip
     </el-button>
     
-    <el-table :data="list" v-loading.body="listLoading" element-loading-text="拼命加载中" border fit highlight-current-row>
-      <el-table-column align="center" label='ID' width="95">
+    <el-table 
+      :data="list" 
+      v-loading.body="listLoading" 
+      element-loading-text="拼命加载中" 
+      border 
+      highlight-current-row 
+      style="width: 100%"
+    >
+      <el-table-column align="center" label='ID'>
         <template slot-scope="scope">
           {{scope.$index}}
         </template>
@@ -40,7 +47,7 @@
           {{scope.row.title}}
         </template>
       </el-table-column>
-      <el-table-column label="作者" width="95" align="center">
+      <el-table-column label="作者" align="center">
         <template slot-scope="scope">
           <el-tag>{{scope.row.author}}</el-tag>
         </template>
@@ -50,11 +57,30 @@
           {{scope.row.pageviews}}
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="发布时间" width="220">
+      <el-table-column align="center" prop="created_at" label="发布时间">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
           <span>{{scope.row.display_time}}</span>
         </template>
+      </el-table-column>
+    </el-table>
+
+    <el-table
+      :data="tableData"
+      style="width: 100%">
+      <el-table-column
+        prop="date"
+        label="日期"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="name"
+        label="姓名"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="address"
+        label="地址">
       </el-table-column>
     </el-table>
 
@@ -67,8 +93,31 @@ export default {
     return {
       filename: "",
       downloadLoading: false,
-      list: null,
-      listLoading: false
+      list: [],
+      listLoading: false,
+      downLoading: false,
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄"
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1517 弄"
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1519 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "",
+          address: "上海市普陀区金沙江路 1516 弄"
+        }
+      ]
     };
   },
   methods: {
@@ -82,15 +131,17 @@ export default {
       // 第一个参数[] 是一个数组，当前这个 require.ensure所依赖的其他 异步加载的模块
       require.ensure([], () => {
         const { export_txt_to_zip } = require("vendor/Export2Zip");
-        const tHeader = ["序号", "文章标题", "作者", "阅读数", "发布时间"];
-        const filterVal = [
-          "id",
-          "title",
-          "author",
-          "pageviews",
-          "display_time"
-        ];
-        const list = this.list;
+        // const tHeader = ["序号", "文章标题", "作者", "阅读数", "发布时间"];
+        const tHeader = ["日期", "姓名", "地址"];
+        // const filterVal = [
+        //   "id",
+        //   "title",
+        //   "author",
+        //   "pageviews",
+        //   "display_time"
+        // ];
+        const filterVal = ["time", "name", "address"];
+        const list = this.tableData;
         const data = this.formatJson(filterVal, list);
         export_txt_to_zip(tHeader, data, this.filename, this.filename);
         this.downloadLoading = false;
