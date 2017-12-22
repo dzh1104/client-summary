@@ -131,9 +131,25 @@ export default {
       // https://doc.webpack-china.org/guides/migrating/#require-ensure-amd-require-
       // https://cnodejs.org/topic/586823335eac96bb04d3e305
       // 第一个参数[] 是一个数组，当前这个 require.ensure所依赖的其他 异步加载的模块
-      require.ensure([], () => {
-        const { export_txt_to_zip } = require("vendor/Export2Zip");
-        // const tHeader = ["序号", "文章标题", "作者", "阅读数", "发布时间"];
+      // require.ensure([], () => {
+      //   const { export_txt_to_zip } = require("vendor/Export2Zip");
+      //   // const tHeader = ["序号", "文章标题", "作者", "阅读数", "发布时间"];
+      //   const tHeader = ["日期", "姓名", "地址"];
+      //   // const filterVal = [
+      //   //   "id",
+      //   //   "title",
+      //   //   "author",
+      //   //   "pageviews",
+      //   //   "display_time"
+      //   // ];
+      //   const filterVal = ["time", "name", "address"];
+      //   const list = this.tableData;
+      //   const data = this.formatJson(filterVal, list);
+      //   export_txt_to_zip(tHeader, data, this.filename, this.filename);
+      //   this.downloadLoading = false;
+      // });
+      import('vendor/Export2Zip').then(res => {
+        console.log('res', res);
         const tHeader = ["日期", "姓名", "地址"];
         // const filterVal = [
         //   "id",
@@ -145,9 +161,9 @@ export default {
         const filterVal = ["time", "name", "address"];
         const list = this.tableData;
         const data = this.formatJson(filterVal, list);
-        export_txt_to_zip(tHeader, data, this.filename, this.filename);
+        res.export_txt_to_zip(tHeader, data, this.filename, this.filename);
         this.downloadLoading = false;
-      });
+      })
     },
     formatJson(filterVal, jsonData) {
       return jsonData.map(v => filterVal.map(j => v[j]));
