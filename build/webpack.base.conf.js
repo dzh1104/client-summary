@@ -3,6 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 var webpack = require('webpack')
 
 function resolve(dir) {
@@ -67,6 +68,13 @@ module.exports = {
         options: {
           symbolId: 'icon-[name]'
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })),
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
