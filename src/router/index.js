@@ -45,7 +45,7 @@ export const constantRouterMap = [{
   // hidden: true,
   children: [{
     path: 'home',
-    component: _import('home/index'),
+    component: _import('chart/map/index'),
     name: 'home',
     meta: {
       title: 'home',
