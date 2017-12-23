@@ -250,6 +250,14 @@ export const asyncRouterMap = [{
         title: 'backtotop',
         icon: 'up'
       }
+    }, {
+      path: 'date',
+      component: _import('components/date/index'),
+      name: 'date',
+      meta: {
+        title: 'date',
+        icon: 'date'
+      }
     }]
   },
 
