@@ -89,7 +89,6 @@
 </template>
 
 <script>
-import PatientApi from 'api/patient';
 export default {
   data() {
     return {
@@ -169,20 +168,6 @@ export default {
       return jsonData.map(v => filterVal.map(j => v[j]));
     },
     creatPatient() {
-      PatientApi.getPtList({
-        username: 'a',
-        patient: {
-          name: 'dingzhaohua',
-          age: 20,
-          disease: [],
-          discoveryTime: 123456,
-          genderCode: 1,
-          weight: 180,
-          height: 140,
-          remark: '没毛病',
-          mobile: 120
-        }
-      });
     }
   }
 };
