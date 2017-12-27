@@ -83,16 +83,6 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      }, 
-      // https://github.com/shepherdwind/css-hot-loader
-      {
-        test: /\.css$/,
-        // solve node_modules element style error
-        include: [resolve('src')],
-        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })),
       }
     ]
   }
