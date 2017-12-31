@@ -13,20 +13,15 @@ const service = axios.create({
   // 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise
   // 大于等于200 小于300 通过校验 resolve
   // 错误处理的方式参考廖雪峰https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014735944539193ab2edd2740f44a79efb438a05e83727000
-  validateStatus: function (status) {
+  validateStatus(status) {
     return status >= 200 && status < 300; // 默认的
   },
   timeout: 6000
 });
 
-let beforeFetchHash;
-
 const fetch = {
   get(url, reqData, needAlert = true) {
-    setBeforeFetchHash();
     return service.get(url, {
-      url: url,
-      method: 'get',
       params: reqData
     }).then(resData => {
       return handleResData(resData, needAlert);
@@ -35,10 +30,7 @@ const fetch = {
     })
   },
   post(url, reqData, needAlert = true) {
-    setBeforeFetchHash();
     return service.post(url, {
-      url: url,
-      method: 'post',
       data: reqData
     }).then(resData => {
       return handleResData(resData, needAlert);
@@ -47,10 +39,7 @@ const fetch = {
     })
   },
   put(url, reqData, needAlert = true) {
-    setBeforeFetchHash();
     return service.put(url, {
-      url: url,
-      method: 'put',
       data: reqData
     }).then(resData => {
       return handleResData(resData, needAlert);
@@ -59,10 +48,7 @@ const fetch = {
     })
   },
   delete(url, reqData, needAlert = true) {
-    setBeforeFetchHash();
     return service.delete(url, {
-      url: url,
-      method: 'delete',
       params: reqData
     }).then(resData => {
       return handleResData(resData, needAlert);
@@ -72,9 +58,11 @@ const fetch = {
   }
 };
 
-function setBeforeFetchHash() {
+function setBeforeFetchUrl() {
   // 路由mode开启history 使用window.location.pathname
-  beforeFetchHash = window.location.hash;
+  // beforeFetchHash = window.location.hash;
+  // 对应handleResData中也作修改
+  beforeFetchHash = window.location.pathname;
 }
 /**
  * 对错误进行统一处理 不在页面中处理
@@ -83,18 +71,17 @@ function setBeforeFetchHash() {
  * @returns {Number | Object} 页面中可以通过返回的数据类型进行逻辑处理，若为Number，直接返回不做处理
  */
 function handleResData(resData, needAlert) {
-  if (window.location.hash !== beforeFetchHash) {
-    return;
-  }
   console.log('response data', resData);
   //错误处理 利用element-ui的Message统一弹出
-  if (resData.data.code && needAlert) {
-    Message({
-      message: resData.data.zhmsg,
-      type: 'error',
-      duration: 3000,
-      showClose: true
-    });
+  if (resData.data.code) {
+    if (needAlert) {
+      Message({
+        message: resData.data.zhmsg,
+        type: 'error',
+        duration: 3000,
+        showClose: true
+      });
+    }
     //返回code
     return resData.data.code;
   }
@@ -121,8 +108,8 @@ function handleError(error) {
   } else {
     // Something happened in setting up the request that triggered an Error
     console.log('Error', error.message);
-    // 返回特殊数字0，便于错误逻辑处理
-    return 0;
+    // 返回特殊数字-1，便于错误逻辑处理
+    return -1;
   }
   console.log('error.config', error.config);
 }

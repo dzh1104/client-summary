@@ -2,7 +2,7 @@
  * @Author: dzh 
  * @Date: 2017-11-24 10:00:23 
  * @Last Modified by: dzh
- * @Last Modified time: 2017-12-15 17:41:42
+ * @Last Modified time: 2017-12-29 12:10:02
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -45,3 +45,10 @@ function test(n, x = 2, y = 3) {
   return n + x + y;
 }
 // console.log('test res', test(10, y = 4)); python可以
+
+function test({name = 'dzh', age}) {
+  console.log('name', name);
+  console.log('age', age);
+}
+
+test({age: 40});
