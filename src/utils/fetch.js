@@ -26,7 +26,7 @@ const fetch = {
     }).then(resData => {
       return handleResData(resData, needAlert);
     }).catch(error => {
-      return handleError(error);
+      return handleError(error, url);
     })
   },
   post(url, reqData, needAlert = true) {
@@ -35,7 +35,7 @@ const fetch = {
     }).then(resData => {
       return handleResData(resData, needAlert);
     }).catch(error => {
-      return handleError(error);
+      return handleError(error, url);
     })
   },
   put(url, reqData, needAlert = true) {
@@ -44,7 +44,7 @@ const fetch = {
     }).then(resData => {
       return handleResData(resData, needAlert);
     }).catch(error => {
-      return handleError(error);
+      return handleError(error, url);
     })
   },
   delete(url, reqData, needAlert = true) {
@@ -53,7 +53,7 @@ const fetch = {
     }).then(resData => {
       return handleResData(resData, needAlert);
     }).catch(error => {
-      return handleError(error);
+      return handleError(error, url);
     })
   }
 };
@@ -92,13 +92,14 @@ function handleResData(resData, needAlert) {
 /**
  * @description 这种是请求的错误，并非业务上的错误，业务上的错误需要在处理返回数据中处理handleResData
  * @param {Object} error 接口错误对像
+ * @param {String} url 请求报错的接口的path 帮助定位错误接口
  */
-function handleError(error) {
+function handleError(error, url) {
   if (error.response) {
     // 请求已发出，但服务器响应的状态码不在 2xx 范围内
     // 利用element-ui的Message统一弹出
     Message({
-      message: error.response.status,
+      message: url + '' + error.response.status,
       type: 'error',
       duration: 3000,
       showClose: true
@@ -107,11 +108,11 @@ function handleError(error) {
     return error.response.status
   } else {
     // Something happened in setting up the request that triggered an Error
-    console.log('Error', error.message);
+    console.warn('Error at', error.message, url);
     // 返回特殊数字-1，便于错误逻辑处理
     return -1;
   }
-  console.log('error.config', error.config);
+  console.warn('error.config at', error.config, url);
 }
 
 export default fetch;
