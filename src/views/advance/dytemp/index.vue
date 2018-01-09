@@ -22,8 +22,15 @@ export default {
   data() {
     return {
       // 使用原生html写法onclick可以，使用vue语法绑定点击事件不生效
-      content1: `<p @click="handleClick('v-html vue绑定事件')" class="f-cur">这是段落1</p><p onclick="alert('v-html html绑定事件')" class="f-cur">这是段落2</p>`,
-      content2: `<p @click="handleClick('v-html vue绑定事件')" class="f-cur">这是段落1</p><p onclick="alert('v-html html绑定事件')" class="f-cur">这是段落2</p>`
+      // v-html无法渲染局部模板，需要使用这个组件来实现
+      content1: `
+        <p @click="handleClick('v-html vue绑定事件')" class="f-cur">这是段落1</p>
+        <p onclick="alert('v-html html绑定事件')" class="f-cur">这是段落2</p>
+      `,
+      content2: `
+        <p @click="handleClick('v-html vue绑定事件')" class="f-cur">这是段落1</p>
+        <p onclick="alert('v-html html绑定事件')" class="f-cur">这是段落2</p>
+      `
     }
   },
   methods: {
