@@ -258,6 +258,14 @@ export const asyncRouterMap = [{
         title: 'date',
         icon: 'date'
       }
+    }, {
+      path: 'model',
+      component: _import('components/v-model/index'),
+      name: 'model',
+      meta: {
+        title: 'model',
+        icon: 'link'
+      }
     }]
   },
 
