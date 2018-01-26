@@ -14,13 +14,14 @@ export function isEmptyObj(obj) {
 }
 
 /**
- * @description 参数调用Object.prototype.toString方法，返回其返回值
+ * @description 参数调用Object.prototype.toString方法，返回其返回值，无法区分自定义数据类型
  * @param {*} arg 
  * @returns {String} [object Array] ...
  */
 export function checkType(arg) {
   return Object.prototype.toString.call(arg);
 }
+
 /**
  * @description 判断一个属性是否是一个对象的自有属性，而不是通过原型链继承来的
  * @param {Object} obj 
@@ -30,6 +31,16 @@ export function checkType(arg) {
 export function hasOwn(obj, key) {
   return Object.prototype.hasOwnProperty.call(obj, key);
 };
+
+/**
+ * 判断属性是否存在于对象的原型对象上
+ * @param {Object} obj 
+ * @param {String} key 
+ * @returns {Boolean}
+ */
+export function isProperty(obj, key) {
+  return !obj.hasOwnProperty(key) && key in obj;
+}
 
 /**
  * @description 一个对象扩展到另外一个对象，返回扩展后的对象
@@ -261,3 +272,18 @@ function deepClone(source) {
 
   return targetObj;
 }
+
+/**
+ * 函数节流: 某些代码不可以在没有间断的情况下连续重复执行
+ * 优化高频率执行js代码的一种手段
+ * 滚动事件、窗口onresize事件
+ * @param {Function} method 
+ * @param {Object} context 
+ */
+export const throttle = (method, context) => {
+  clearTimeout(method.tId);
+  method.tId = setTimeout(() => {
+    method.call(context);
+  }, 300);
+}
+
