@@ -215,6 +215,14 @@ export const asyncRouterMap = [{
         title: 'dom',
         icon: 'dom'
       }
+    }, {
+      path: 'style-class',
+      component: _import('advance/styleClass/index'),
+      name: 'styleClass',
+      meta: {
+        title: 'styleClass',
+        icon: 'link'
+      }
     }]
   },
 
