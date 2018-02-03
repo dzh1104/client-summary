@@ -5,10 +5,22 @@ import {
   MessageBox
 } from 'element-ui';
 
+let baseURL = '';
+
+// 开发时选择接口环境
+const proxyURL = '/dev';
+// const proxyURL = '/sit';
+// const proxyURL = '/prod';
+
+// 判定是否打包 判定本地和线上
+if (process.env.NODE_ENV !== 'production') {
+  baseURL = proxyURL + baseURL;
+}
+
 //创建axios实例
 const service = axios.create({
   //api的base_url(根据环境)
-  baseURL: process.env.NODE_ENV === 'development' ? '/dev' : '',
+  baseURL,
   responseType: 'json',
   // 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise
   // 大于等于200 小于300 通过校验 resolve

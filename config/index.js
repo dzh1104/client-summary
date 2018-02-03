@@ -38,6 +38,20 @@ module.exports = {
         pathRewrite: {
           '^/dev': ''
         }
+      },
+      '/sit': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/dev': ''
+        }
+      },
+      '/prod': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/dev': ''
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
